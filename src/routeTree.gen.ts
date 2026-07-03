@@ -9,38 +9,381 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RendezVousRouteImport } from './routes/rendez-vous'
+import { Route as PartenairesRouteImport } from './routes/partenaires'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CommentCaMarcheRouteImport } from './routes/comment-ca-marche'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthResetPasswordRouteImport } from './routes/auth.reset-password'
+import { Route as AuthRegisterRouteImport } from './routes/auth.register'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authenticated/dashboard.index'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedDashboardRendezVousRouteImport } from './routes/_authenticated/dashboard.rendez-vous'
+import { Route as AuthenticatedDashboardProfilRouteImport } from './routes/_authenticated/dashboard.profil'
+import { Route as AuthenticatedDashboardAnnoncesRouteImport } from './routes/_authenticated/dashboard.annonces'
+import { Route as AuthenticatedAdminUtilisateursRouteImport } from './routes/_authenticated/admin.utilisateurs'
+import { Route as AuthenticatedAdminRendezVousRouteImport } from './routes/_authenticated/admin.rendez-vous'
+import { Route as AuthenticatedAdminPartenairesRouteImport } from './routes/_authenticated/admin.partenaires'
+import { Route as AuthenticatedAdminContactsRouteImport } from './routes/_authenticated/admin.contacts'
+import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
+import { Route as AuthenticatedAdminAnnoncesRouteImport } from './routes/_authenticated/admin.annonces'
+import { Route as AuthenticatedDashboardAnnoncesNouvelleRouteImport } from './routes/_authenticated/dashboard.annonces.nouvelle'
+import { Route as AuthenticatedAdminUtilisateursIdRouteImport } from './routes/_authenticated/admin.utilisateurs.$id'
 
+const RendezVousRoute = RendezVousRouteImport.update({
+  id: '/rendez-vous',
+  path: '/rendez-vous',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartenairesRoute = PartenairesRouteImport.update({
+  id: '/partenaires',
+  path: '/partenaires',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommentCaMarcheRoute = CommentCaMarcheRouteImport.update({
+  id: '/comment-ca-marche',
+  path: '/comment-ca-marche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthResetPasswordRoute = AuthResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthRegisterRoute = AuthRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedDashboardIndexRoute =
+  AuthenticatedDashboardIndexRouteImport.update({
+    id: '/dashboard/',
+    path: '/dashboard/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRendezVousRoute =
+  AuthenticatedDashboardRendezVousRouteImport.update({
+    id: '/dashboard/rendez-vous',
+    path: '/dashboard/rendez-vous',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardProfilRoute =
+  AuthenticatedDashboardProfilRouteImport.update({
+    id: '/dashboard/profil',
+    path: '/dashboard/profil',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardAnnoncesRoute =
+  AuthenticatedDashboardAnnoncesRouteImport.update({
+    id: '/dashboard/annonces',
+    path: '/dashboard/annonces',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminUtilisateursRoute =
+  AuthenticatedAdminUtilisateursRouteImport.update({
+    id: '/admin/utilisateurs',
+    path: '/admin/utilisateurs',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminRendezVousRoute =
+  AuthenticatedAdminRendezVousRouteImport.update({
+    id: '/admin/rendez-vous',
+    path: '/admin/rendez-vous',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminPartenairesRoute =
+  AuthenticatedAdminPartenairesRouteImport.update({
+    id: '/admin/partenaires',
+    path: '/admin/partenaires',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminContactsRoute =
+  AuthenticatedAdminContactsRouteImport.update({
+    id: '/admin/contacts',
+    path: '/admin/contacts',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminAuditRoute = AuthenticatedAdminAuditRouteImport.update({
+  id: '/admin/audit',
+  path: '/admin/audit',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminAnnoncesRoute =
+  AuthenticatedAdminAnnoncesRouteImport.update({
+    id: '/admin/annonces',
+    path: '/admin/annonces',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardAnnoncesNouvelleRoute =
+  AuthenticatedDashboardAnnoncesNouvelleRouteImport.update({
+    id: '/nouvelle',
+    path: '/nouvelle',
+    getParentRoute: () => AuthenticatedDashboardAnnoncesRoute,
+  } as any)
+const AuthenticatedAdminUtilisateursIdRoute =
+  AuthenticatedAdminUtilisateursIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => AuthenticatedAdminUtilisateursRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/comment-ca-marche': typeof CommentCaMarcheRoute
+  '/contact': typeof ContactRoute
+  '/partenaires': typeof PartenairesRoute
+  '/rendez-vous': typeof RendezVousRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/admin/annonces': typeof AuthenticatedAdminAnnoncesRoute
+  '/admin/audit': typeof AuthenticatedAdminAuditRoute
+  '/admin/contacts': typeof AuthenticatedAdminContactsRoute
+  '/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
+  '/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  '/dashboard/annonces': typeof AuthenticatedDashboardAnnoncesRouteWithChildren
+  '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
+  '/dashboard/rendez-vous': typeof AuthenticatedDashboardRendezVousRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/dashboard/': typeof AuthenticatedDashboardIndexRoute
+  '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
+  '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/comment-ca-marche': typeof CommentCaMarcheRoute
+  '/contact': typeof ContactRoute
+  '/partenaires': typeof PartenairesRoute
+  '/rendez-vous': typeof RendezVousRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/admin/annonces': typeof AuthenticatedAdminAnnoncesRoute
+  '/admin/audit': typeof AuthenticatedAdminAuditRoute
+  '/admin/contacts': typeof AuthenticatedAdminContactsRoute
+  '/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
+  '/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  '/dashboard/annonces': typeof AuthenticatedDashboardAnnoncesRouteWithChildren
+  '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
+  '/dashboard/rendez-vous': typeof AuthenticatedDashboardRendezVousRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/dashboard': typeof AuthenticatedDashboardIndexRoute
+  '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
+  '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/a-propos': typeof AProposRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/comment-ca-marche': typeof CommentCaMarcheRoute
+  '/contact': typeof ContactRoute
+  '/partenaires': typeof PartenairesRoute
+  '/rendez-vous': typeof RendezVousRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/_authenticated/admin/annonces': typeof AuthenticatedAdminAnnoncesRoute
+  '/_authenticated/admin/audit': typeof AuthenticatedAdminAuditRoute
+  '/_authenticated/admin/contacts': typeof AuthenticatedAdminContactsRoute
+  '/_authenticated/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/_authenticated/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
+  '/_authenticated/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  '/_authenticated/dashboard/annonces': typeof AuthenticatedDashboardAnnoncesRouteWithChildren
+  '/_authenticated/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
+  '/_authenticated/dashboard/rendez-vous': typeof AuthenticatedDashboardRendezVousRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
+  '/_authenticated/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
+  '/_authenticated/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/auth'
+    | '/comment-ca-marche'
+    | '/contact'
+    | '/partenaires'
+    | '/rendez-vous'
+    | '/admin/login'
+    | '/auth/register'
+    | '/auth/reset-password'
+    | '/admin/annonces'
+    | '/admin/audit'
+    | '/admin/contacts'
+    | '/admin/partenaires'
+    | '/admin/rendez-vous'
+    | '/admin/utilisateurs'
+    | '/dashboard/annonces'
+    | '/dashboard/profil'
+    | '/dashboard/rendez-vous'
+    | '/admin/'
+    | '/dashboard/'
+    | '/admin/utilisateurs/$id'
+    | '/dashboard/annonces/nouvelle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/auth'
+    | '/comment-ca-marche'
+    | '/contact'
+    | '/partenaires'
+    | '/rendez-vous'
+    | '/admin/login'
+    | '/auth/register'
+    | '/auth/reset-password'
+    | '/admin/annonces'
+    | '/admin/audit'
+    | '/admin/contacts'
+    | '/admin/partenaires'
+    | '/admin/rendez-vous'
+    | '/admin/utilisateurs'
+    | '/dashboard/annonces'
+    | '/dashboard/profil'
+    | '/dashboard/rendez-vous'
+    | '/admin'
+    | '/dashboard'
+    | '/admin/utilisateurs/$id'
+    | '/dashboard/annonces/nouvelle'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/a-propos'
+    | '/auth'
+    | '/comment-ca-marche'
+    | '/contact'
+    | '/partenaires'
+    | '/rendez-vous'
+    | '/admin/login'
+    | '/auth/register'
+    | '/auth/reset-password'
+    | '/_authenticated/admin/annonces'
+    | '/_authenticated/admin/audit'
+    | '/_authenticated/admin/contacts'
+    | '/_authenticated/admin/partenaires'
+    | '/_authenticated/admin/rendez-vous'
+    | '/_authenticated/admin/utilisateurs'
+    | '/_authenticated/dashboard/annonces'
+    | '/_authenticated/dashboard/profil'
+    | '/_authenticated/dashboard/rendez-vous'
+    | '/_authenticated/admin/'
+    | '/_authenticated/dashboard/'
+    | '/_authenticated/admin/utilisateurs/$id'
+    | '/_authenticated/dashboard/annonces/nouvelle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AProposRoute: typeof AProposRoute
+  AuthRoute: typeof AuthRouteWithChildren
+  CommentCaMarcheRoute: typeof CommentCaMarcheRoute
+  ContactRoute: typeof ContactRoute
+  PartenairesRoute: typeof PartenairesRoute
+  RendezVousRoute: typeof RendezVousRoute
+  AdminLoginRoute: typeof AdminLoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/rendez-vous': {
+      id: '/rendez-vous'
+      path: '/rendez-vous'
+      fullPath: '/rendez-vous'
+      preLoaderRoute: typeof RendezVousRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partenaires': {
+      id: '/partenaires'
+      path: '/partenaires'
+      fullPath: '/partenaires'
+      preLoaderRoute: typeof PartenairesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comment-ca-marche': {
+      id: '/comment-ca-marche'
+      path: '/comment-ca-marche'
+      fullPath: '/comment-ca-marche'
+      preLoaderRoute: typeof CommentCaMarcheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +391,207 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/reset-password': {
+      id: '/auth/reset-password'
+      path: '/reset-password'
+      fullPath: '/auth/reset-password'
+      preLoaderRoute: typeof AuthResetPasswordRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/auth/register': {
+      id: '/auth/register'
+      path: '/register'
+      fullPath: '/auth/register'
+      preLoaderRoute: typeof AuthRegisterRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/dashboard/': {
+      id: '/_authenticated/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof AuthenticatedDashboardIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard/rendez-vous': {
+      id: '/_authenticated/dashboard/rendez-vous'
+      path: '/dashboard/rendez-vous'
+      fullPath: '/dashboard/rendez-vous'
+      preLoaderRoute: typeof AuthenticatedDashboardRendezVousRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard/profil': {
+      id: '/_authenticated/dashboard/profil'
+      path: '/dashboard/profil'
+      fullPath: '/dashboard/profil'
+      preLoaderRoute: typeof AuthenticatedDashboardProfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard/annonces': {
+      id: '/_authenticated/dashboard/annonces'
+      path: '/dashboard/annonces'
+      fullPath: '/dashboard/annonces'
+      preLoaderRoute: typeof AuthenticatedDashboardAnnoncesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/utilisateurs': {
+      id: '/_authenticated/admin/utilisateurs'
+      path: '/admin/utilisateurs'
+      fullPath: '/admin/utilisateurs'
+      preLoaderRoute: typeof AuthenticatedAdminUtilisateursRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/rendez-vous': {
+      id: '/_authenticated/admin/rendez-vous'
+      path: '/admin/rendez-vous'
+      fullPath: '/admin/rendez-vous'
+      preLoaderRoute: typeof AuthenticatedAdminRendezVousRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/partenaires': {
+      id: '/_authenticated/admin/partenaires'
+      path: '/admin/partenaires'
+      fullPath: '/admin/partenaires'
+      preLoaderRoute: typeof AuthenticatedAdminPartenairesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/contacts': {
+      id: '/_authenticated/admin/contacts'
+      path: '/admin/contacts'
+      fullPath: '/admin/contacts'
+      preLoaderRoute: typeof AuthenticatedAdminContactsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/audit': {
+      id: '/_authenticated/admin/audit'
+      path: '/admin/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AuthenticatedAdminAuditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/annonces': {
+      id: '/_authenticated/admin/annonces'
+      path: '/admin/annonces'
+      fullPath: '/admin/annonces'
+      preLoaderRoute: typeof AuthenticatedAdminAnnoncesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard/annonces/nouvelle': {
+      id: '/_authenticated/dashboard/annonces/nouvelle'
+      path: '/nouvelle'
+      fullPath: '/dashboard/annonces/nouvelle'
+      preLoaderRoute: typeof AuthenticatedDashboardAnnoncesNouvelleRouteImport
+      parentRoute: typeof AuthenticatedDashboardAnnoncesRoute
+    }
+    '/_authenticated/admin/utilisateurs/$id': {
+      id: '/_authenticated/admin/utilisateurs/$id'
+      path: '/$id'
+      fullPath: '/admin/utilisateurs/$id'
+      preLoaderRoute: typeof AuthenticatedAdminUtilisateursIdRouteImport
+      parentRoute: typeof AuthenticatedAdminUtilisateursRoute
+    }
   }
 }
 
+interface AuthenticatedAdminUtilisateursRouteChildren {
+  AuthenticatedAdminUtilisateursIdRoute: typeof AuthenticatedAdminUtilisateursIdRoute
+}
+
+const AuthenticatedAdminUtilisateursRouteChildren: AuthenticatedAdminUtilisateursRouteChildren =
+  {
+    AuthenticatedAdminUtilisateursIdRoute:
+      AuthenticatedAdminUtilisateursIdRoute,
+  }
+
+const AuthenticatedAdminUtilisateursRouteWithChildren =
+  AuthenticatedAdminUtilisateursRoute._addFileChildren(
+    AuthenticatedAdminUtilisateursRouteChildren,
+  )
+
+interface AuthenticatedDashboardAnnoncesRouteChildren {
+  AuthenticatedDashboardAnnoncesNouvelleRoute: typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+}
+
+const AuthenticatedDashboardAnnoncesRouteChildren: AuthenticatedDashboardAnnoncesRouteChildren =
+  {
+    AuthenticatedDashboardAnnoncesNouvelleRoute:
+      AuthenticatedDashboardAnnoncesNouvelleRoute,
+  }
+
+const AuthenticatedDashboardAnnoncesRouteWithChildren =
+  AuthenticatedDashboardAnnoncesRoute._addFileChildren(
+    AuthenticatedDashboardAnnoncesRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminAnnoncesRoute: typeof AuthenticatedAdminAnnoncesRoute
+  AuthenticatedAdminAuditRoute: typeof AuthenticatedAdminAuditRoute
+  AuthenticatedAdminContactsRoute: typeof AuthenticatedAdminContactsRoute
+  AuthenticatedAdminPartenairesRoute: typeof AuthenticatedAdminPartenairesRoute
+  AuthenticatedAdminRendezVousRoute: typeof AuthenticatedAdminRendezVousRoute
+  AuthenticatedAdminUtilisateursRoute: typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  AuthenticatedDashboardAnnoncesRoute: typeof AuthenticatedDashboardAnnoncesRouteWithChildren
+  AuthenticatedDashboardProfilRoute: typeof AuthenticatedDashboardProfilRoute
+  AuthenticatedDashboardRendezVousRoute: typeof AuthenticatedDashboardRendezVousRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminAnnoncesRoute: AuthenticatedAdminAnnoncesRoute,
+  AuthenticatedAdminAuditRoute: AuthenticatedAdminAuditRoute,
+  AuthenticatedAdminContactsRoute: AuthenticatedAdminContactsRoute,
+  AuthenticatedAdminPartenairesRoute: AuthenticatedAdminPartenairesRoute,
+  AuthenticatedAdminRendezVousRoute: AuthenticatedAdminRendezVousRoute,
+  AuthenticatedAdminUtilisateursRoute:
+    AuthenticatedAdminUtilisateursRouteWithChildren,
+  AuthenticatedDashboardAnnoncesRoute:
+    AuthenticatedDashboardAnnoncesRouteWithChildren,
+  AuthenticatedDashboardProfilRoute: AuthenticatedDashboardProfilRoute,
+  AuthenticatedDashboardRendezVousRoute: AuthenticatedDashboardRendezVousRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedDashboardIndexRoute: AuthenticatedDashboardIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface AuthRouteChildren {
+  AuthRegisterRoute: typeof AuthRegisterRoute
+  AuthResetPasswordRoute: typeof AuthResetPasswordRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthRegisterRoute: AuthRegisterRoute,
+  AuthResetPasswordRoute: AuthResetPasswordRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AProposRoute: AProposRoute,
+  AuthRoute: AuthRouteWithChildren,
+  CommentCaMarcheRoute: CommentCaMarcheRoute,
+  ContactRoute: ContactRoute,
+  PartenairesRoute: PartenairesRoute,
+  RendezVousRoute: RendezVousRoute,
+  AdminLoginRoute: AdminLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

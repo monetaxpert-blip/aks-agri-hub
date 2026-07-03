@@ -1,0 +1,61 @@
+import { z } from "zod";
+
+export const emailSchema = z.string().trim().email("Email invalide").max(255);
+export const phoneSchema = z.string().trim().min(5, "Téléphone invalide").max(30);
+
+export const typeProfilSchema = z.enum(["agriculteur", "etudiant", "investisseur"]);
+
+export const registerSchema = z.object({
+  prenom: z.string().trim().min(2).max(80),
+  nom: z.string().trim().min(2).max(80),
+  email: emailSchema,
+  telephone: phoneSchema,
+  password: z.string().min(8, "8 caractères minimum").max(72),
+  type_profil: typeProfilSchema,
+  region: z.string().trim().max(80).optional().default(""),
+  commune: z.string().trim().max(80).optional().default(""),
+});
+
+export const contactSchema = z.object({
+  nom: z.string().trim().min(2).max(200),
+  telephone: z.string().trim().min(5).max(30).optional().or(z.literal("")),
+  email: emailSchema,
+  sujet: z.string().trim().min(2).max(200),
+  message: z.string().trim().min(5).max(5000),
+  hp: z.string().max(0).optional(), // honeypot
+});
+
+export const rendezVousSchema = z.object({
+  nom: z.string().trim().min(2).max(200),
+  email: emailSchema,
+  telephone: phoneSchema,
+  profil: z.string().trim().max(80).optional().or(z.literal("")),
+  date_souhaitee: z.string().min(4),
+  heure_souhaitee: z.string().min(3).max(20),
+  lieu: z.string().trim().max(200).optional().or(z.literal("")),
+  mode: z.enum(["presentiel", "visio", "whatsapp"]).default("presentiel"),
+  objet: z.string().trim().min(2).max(200),
+  description: z.string().trim().max(3000).optional().or(z.literal("")),
+  annonce_id: z.string().uuid().optional(),
+  hp: z.string().max(0).optional(),
+});
+
+export const annonceSchema = z.object({
+  titre: z.string().trim().min(3).max(200),
+  description: z.string().trim().min(10).max(5000),
+  categorie: z.string().trim().max(80).optional().or(z.literal("")),
+  budget: z.string().trim().max(80).optional().or(z.literal("")),
+  region: z.string().trim().max(80).optional().or(z.literal("")),
+  pieces_jointes: z.array(z.object({ url: z.string(), name: z.string(), size: z.number(), type: z.string() })).default([]),
+});
+
+export const profileUpdateSchema = z.object({
+  prenom: z.string().trim().min(2).max(80),
+  nom: z.string().trim().min(2).max(80),
+  telephone: phoneSchema,
+  region: z.string().trim().max(80).optional().or(z.literal("")),
+  commune: z.string().trim().max(80).optional().or(z.literal("")),
+  adresse: z.string().trim().max(300).optional().or(z.literal("")),
+  bio: z.string().trim().max(1500).optional().or(z.literal("")),
+  avatar_url: z.string().max(500).optional().or(z.literal("")),
+});
