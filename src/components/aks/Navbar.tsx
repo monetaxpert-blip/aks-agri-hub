@@ -65,7 +65,7 @@ export function Navbar() {
                 <Button variant="ghost" size="sm">Se connecter</Button>
               </Link>
               <Link to="/auth/register">
-                <PremiumButton size="sm">Get Started</PremiumButton>
+                <PremiumButton size="sm">Commencer</PremiumButton>
               </Link>
             </>
           )}

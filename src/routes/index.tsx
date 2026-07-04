@@ -52,7 +52,7 @@ function Home() {
               AgroKonnecte Sénégal est une plateforme d'intermédiation qui met en relation agriculteurs, étudiants et investisseurs — de manière sécurisée, humaine et personnalisée.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/auth/register"><PremiumButton size="lg">Get Started</PremiumButton></Link>
+              <Link to="/auth/register"><PremiumButton size="lg">Commencer</PremiumButton></Link>
               <Link to="/comment-ca-marche" className="inline-flex items-center gap-2 rounded-2xl border border-white/40 bg-white/10 px-6 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/20">
                 Comment ça marche <ArrowRight className="h-4 w-4" />
               </Link>
