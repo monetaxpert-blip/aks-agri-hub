@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Eye, EyeOff, Lock, User, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable";
 
 import { AuthShell } from "@/components/aks/AuthShell";
 import { Input } from "@/components/ui/input";
@@ -44,11 +45,17 @@ function AuthPage() {
 
   async function google() {
     setLoading(true);
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: { redirectTo: window.location.origin + "/dashboard" },
-    });
-    if (error) { toast.error(error.message); setLoading(false); }
+    try {
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+      });
+      if (result.error) { toast.error(result.error.message ?? "Erreur Google"); setLoading(false); return; }
+      if (result.redirected) return;
+      nav({ to: "/dashboard" });
+    } catch (err) {
+      toast.error((err as Error).message);
+      setLoading(false);
+    }
   }
 
   return (
