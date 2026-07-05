@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
-import logoAsset from "@/assets/ak-logo.png.asset.json";
+import logoUrl from "@/assets/ak-logo.png";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { supabase } from "@/integrations/supabase/client";
 import { SplashScreen } from "@/components/aks/SplashScreen";
@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: logoAsset.url },
+      { rel: "icon", type: "image/png", href: logoUrl },
     ],
   }),
   shellComponent: RootShell,
