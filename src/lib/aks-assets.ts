@@ -1,15 +1,17 @@
-import logo from "@/assets/ak-logo.png.asset.json";
-import splash from "@/assets/ak-splash.png.asset.json";
-import leafyBg from "@/assets/ak-leafy-bg.jpg.asset.json";
-import farmers from "@/assets/ak-farmers.jpg.asset.json";
-import farmerTomatoes from "@/assets/ak-farmer-tomatoes.jpg.asset.json";
+import logo from "@/assets/ak-logo.png";
+import splash from "@/assets/ak-splash.png";
+import leafyBg from "@/assets/ak-leafy-bg.jpg";
+import farmers from "@/assets/ak-farmers.jpg";
+import farmerTomatoes from "@/assets/ak-farmer-tomatoes.jpg";
+import loginMockup from "@/assets/ak-login-mockup.png";
 
 export const AKS_ASSETS = {
-  logo: logo.url,
-  splash: splash.url,
-  leafyBg: leafyBg.url,
-  farmers: farmers.url,
-  farmerTomatoes: farmerTomatoes.url,
+  logo,
+  splash,
+  leafyBg,
+  farmers,
+  farmerTomatoes,
+  loginMockup,
 };
 
 export const AKS_CONTACT = {
