@@ -8,7 +8,7 @@ import { PremiumButton } from "@/components/aks/PremiumButton";
 import { Button } from "@/components/ui/button";
 import { PlusCircle, Trash2 } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/dashboard/annonces")({
+export const Route = createFileRoute("/_authenticated/dashboard/annonces/")({
   component: MesAnnonces,
 });
 

@@ -14,7 +14,6 @@ import appCss from "../styles.css?url";
 import logoUrl from "@/assets/ak-logo.png";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { supabase } from "@/integrations/supabase/client";
-import { SplashScreen } from "@/components/aks/SplashScreen";
 import { Navbar } from "@/components/aks/Navbar";
 import { Footer } from "@/components/aks/Footer";
 import { recordLogin, recordLogout } from "@/lib/user.functions";
@@ -125,7 +124,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SplashScreen />
       {!hideChrome && <Navbar />}
       <main className="min-h-[60vh]">
         <Outlet />

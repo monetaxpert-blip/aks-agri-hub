@@ -43,13 +43,13 @@ function AuthPage() {
     } finally { setLoading(false); }
   }
 
-  async function google() {
+  async function oauth(provider: "google" | "apple") {
     setLoading(true);
     try {
-      const result = await lovable.auth.signInWithOAuth("google", {
+      const result = await lovable.auth.signInWithOAuth(provider, {
         redirect_uri: window.location.origin,
       });
-      if (result.error) { toast.error(result.error.message ?? "Erreur Google"); setLoading(false); return; }
+      if (result.error) { toast.error(result.error.message ?? `Erreur ${provider}`); setLoading(false); return; }
       if (result.redirected) return;
       nav({ to: "/dashboard" });
     } catch (err) {
@@ -98,11 +98,11 @@ function AuthPage() {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <button type="button" onClick={google} className="flex h-11 items-center justify-center gap-2 rounded-2xl border border-border bg-white text-sm font-semibold shadow-sm transition hover:bg-secondary">
+          <button type="button" onClick={() => oauth("google")} disabled={loading} className="flex h-11 items-center justify-center gap-2 rounded-2xl border border-border bg-white text-sm font-semibold shadow-sm transition hover:bg-secondary disabled:opacity-60">
             <svg className="h-4 w-4" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.4-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.9 35.5 44 30.2 44 24c0-1.2-.1-2.3-.4-3.5z"/></svg>
             Google
           </button>
-          <button type="button" onClick={() => toast.info("Apple : bientôt disponible")} className="flex h-11 items-center justify-center gap-2 rounded-2xl border border-border bg-white text-sm font-semibold shadow-sm transition hover:bg-secondary">
+          <button type="button" onClick={() => oauth("apple")} disabled={loading} className="flex h-11 items-center justify-center gap-2 rounded-2xl border border-border bg-black text-sm font-semibold text-white shadow-sm transition hover:bg-black/90 disabled:opacity-60">
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.44 2.24-1.16 3.05-.78.9-2.05 1.6-3.14 1.52-.12-1.1.44-2.28 1.15-3.05.78-.86 2.13-1.5 3.15-1.52zM20.63 17.24c-.53 1.16-.78 1.68-1.47 2.7-.96 1.43-2.32 3.22-4.02 3.23-1.5.02-1.9-.98-3.94-.98-2.04.01-2.47 1-3.98.99-1.7-.02-2.97-1.63-3.94-3.07C1.63 16.36.87 11.34 3.43 8.02c1.24-1.6 3.2-2.63 5.02-2.63 1.86 0 3.03 1.02 4.57 1.02 1.5 0 2.4-1.02 4.55-1.02 1.62 0 3.35.88 4.57 2.4-4.02 2.2-3.36 7.94-1.5 9.45z"/></svg>
             Apple
           </button>
