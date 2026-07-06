@@ -124,7 +124,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SplashScreen />
       {!hideChrome && <Navbar />}
       <main className="min-h-[60vh]">
         <Outlet />
