@@ -43,13 +43,13 @@ function AuthPage() {
     } finally { setLoading(false); }
   }
 
-  async function google() {
+  async function oauth(provider: "google" | "apple") {
     setLoading(true);
     try {
-      const result = await lovable.auth.signInWithOAuth("google", {
+      const result = await lovable.auth.signInWithOAuth(provider, {
         redirect_uri: window.location.origin,
       });
-      if (result.error) { toast.error(result.error.message ?? "Erreur Google"); setLoading(false); return; }
+      if (result.error) { toast.error(result.error.message ?? `Erreur ${provider}`); setLoading(false); return; }
       if (result.redirected) return;
       nav({ to: "/dashboard" });
     } catch (err) {
