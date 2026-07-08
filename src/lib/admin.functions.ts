@@ -195,11 +195,17 @@ export const listAllAnnonces = createServerFn({ method: "POST" })
   .handler(async ({ context, data }) => {
     const { supabase, userId } = context;
     await ensureAdmin(supabase, userId);
-    let q = supabase.from("annonces").select("*, profiles:profiles!annonces_user_id_fkey(prenom, nom, email, telephone, type_profil)").order("created_at", { ascending: false });
+    let q = supabase.from("annonces").select("*").order("created_at", { ascending: false });
     if (data.statut) q = q.eq("statut", data.statut as "pending");
     const { data: rows, error } = await q;
     if (error) throw new Error(error.message);
-    return rows ?? [];
+    const ids = Array.from(new Set((rows ?? []).map((r) => r.user_id)));
+    let profilesById: Record<string, { prenom: string | null; nom: string | null; email: string | null; telephone: string | null; type_profil: string | null }> = {};
+    if (ids.length) {
+      const { data: profs } = await supabase.from("profiles").select("id, prenom, nom, email, telephone, type_profil").in("id", ids);
+      profilesById = Object.fromEntries((profs ?? []).map((p) => [p.id, { prenom: p.prenom, nom: p.nom, email: p.email, telephone: p.telephone, type_profil: p.type_profil }]));
+    }
+    return (rows ?? []).map((r) => ({ ...r, profiles: profilesById[r.user_id] ?? null }));
   });
 
 export const getAnnonceDetail = createServerFn({ method: "POST" })
@@ -209,10 +215,15 @@ export const getAnnonceDetail = createServerFn({ method: "POST" })
     const { supabase, userId } = context;
     await ensureAdmin(supabase, userId);
     const [a, h] = await Promise.all([
-      supabase.from("annonces").select("*, profiles:profiles!annonces_user_id_fkey(*)").eq("id", data.id).maybeSingle(),
+      supabase.from("annonces").select("*").eq("id", data.id).maybeSingle(),
       supabase.from("annonce_history").select("*").eq("annonce_id", data.id).order("created_at", { ascending: false }),
     ]);
-    return { annonce: a.data, history: h.data ?? [] };
+    let profile = null;
+    if (a.data?.user_id) {
+      const { data: p } = await supabase.from("profiles").select("*").eq("id", a.data.user_id).maybeSingle();
+      profile = p;
+    }
+    return { annonce: a.data ? { ...a.data, profiles: profile } : null, history: h.data ?? [] };
   });
 
 export const moderateAnnonce = createServerFn({ method: "POST" })
