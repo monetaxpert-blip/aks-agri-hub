@@ -58,7 +58,8 @@ export function UploadDropzone({
           toast.error(`Erreur upload : ${error.message}`);
           continue;
         }
-        const { data: signed } = await supabase.storage.from(bucket).createSignedUrl(path, 60 * 60 * 24 * 365);
+        // Short-lived preview URL (1h). Fresh URLs are re-signed on demand server-side.
+        const { data: signed } = await supabase.storage.from(bucket).createSignedUrl(path, 60 * 60);
         uploaded.push({
           url: signed?.signedUrl ?? "",
           name: file.name,
