@@ -100,8 +100,21 @@ export const deleteMyAnnonce = createServerFn({ method: "POST" })
   .inputValidator((i: unknown) => z.object({ id: z.string().uuid() }).parse(i))
   .handler(async ({ context, data }) => {
     const { supabase, userId } = context;
+    // Fetch pieces_jointes first (RLS: owner only)
+    const { data: row } = await supabase
+      .from("annonces")
+      .select("pieces_jointes")
+      .eq("id", data.id)
+      .eq("user_id", userId)
+      .maybeSingle();
     const { error } = await supabase.from("annonces").delete().eq("id", data.id).eq("user_id", userId);
     if (error) throw new Error(error.message);
+    // Cleanup storage objects
+    const files = Array.isArray(row?.pieces_jointes) ? (row!.pieces_jointes as Array<{ path?: string }>) : [];
+    const paths = files.map((f) => f?.path).filter((p): p is string => typeof p === "string" && p.length > 0);
+    if (paths.length > 0) {
+      await supabase.storage.from("annonces").remove(paths);
+    }
     await logActivity(supabase, userId, "annonce_delete", { annonce_id: data.id });
     return { ok: true as const };
   });
