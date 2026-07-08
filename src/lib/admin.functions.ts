@@ -215,10 +215,15 @@ export const getAnnonceDetail = createServerFn({ method: "POST" })
     const { supabase, userId } = context;
     await ensureAdmin(supabase, userId);
     const [a, h] = await Promise.all([
-      supabase.from("annonces").select("*, profiles:profiles!annonces_user_id_fkey(*)").eq("id", data.id).maybeSingle(),
+      supabase.from("annonces").select("*").eq("id", data.id).maybeSingle(),
       supabase.from("annonce_history").select("*").eq("annonce_id", data.id).order("created_at", { ascending: false }),
     ]);
-    return { annonce: a.data, history: h.data ?? [] };
+    let profile = null;
+    if (a.data?.user_id) {
+      const { data: p } = await supabase.from("profiles").select("*").eq("id", a.data.user_id).maybeSingle();
+      profile = p;
+    }
+    return { annonce: a.data ? { ...a.data, profiles: profile } : null, history: h.data ?? [] };
   });
 
 export const moderateAnnonce = createServerFn({ method: "POST" })
