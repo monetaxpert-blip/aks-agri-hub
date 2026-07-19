@@ -10,8 +10,7 @@ export function Footer() {
         <div className="md:col-span-2">
           <Logo className="h-12 w-auto" />
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            Plateforme d'intermédiation qui connecte les agriculteurs, étudiants et investisseurs du Sénégal.
-            Chaque demande est étudiée par notre équipe pour garantir des mises en relation de confiance.
+            AgroKonnecte Sénégal est l'espace digital dédié au secteur agricole. Nous connectons agriculteurs, étudiants, investisseurs et cadres — de manière sécurisée, simple et efficace — pour faciliter le développement de projets à fort impact.
           </p>
         </div>
         <div>
