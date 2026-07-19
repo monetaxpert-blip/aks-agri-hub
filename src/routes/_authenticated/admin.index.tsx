@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { getAdminStats } from "@/lib/admin.functions";
-import { Users, Sprout, GraduationCap, Coins, FileText, CalendarClock, LogIn, UserPlus } from "lucide-react";
+import { Users, Sprout, GraduationCap, Coins, Briefcase, FileText, CalendarClock, LogIn, UserPlus } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 
 export const Route = createFileRoute("/_authenticated/admin/")({
@@ -26,8 +26,9 @@ function AdminHome() {
     { name: "Agriculteurs", value: t.agriculteurs },
     { name: "Étudiants", value: t.etudiants },
     { name: "Investisseurs", value: t.investisseurs },
+    { name: "Cadres", value: t.cadres ?? 0 },
   ];
-  const colors = ["#2E7D32", "#FBC02D", "#6D4C41"];
+  const colors = ["#2E7D32", "#FBC02D", "#6D4C41", "#0288D1"];
 
   return (
     <div className="space-y-6">
@@ -38,6 +39,7 @@ function AdminHome() {
         <Stat icon={Sprout} label="Agriculteurs" value={t.agriculteurs} />
         <Stat icon={GraduationCap} label="Étudiants" value={t.etudiants} />
         <Stat icon={Coins} label="Investisseurs" value={t.investisseurs} />
+        <Stat icon={Briefcase} label="Cadres" value={t.cadres ?? 0} />
         <Stat icon={FileText} label="Annonces" value={t.annonces} sub={`${t.annoncesPending} en attente`} />
         <Stat icon={CalendarClock} label="Rendez-vous" value={t.rdv} sub={`${t.rdvPending} en attente`} />
         <Stat icon={LogIn} label="Connexions aujourd'hui" value={t.loginsToday} />

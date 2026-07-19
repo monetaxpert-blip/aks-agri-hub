@@ -81,6 +81,7 @@ function Users() {
             <SelectItem value="agriculteur">Agriculteurs</SelectItem>
             <SelectItem value="etudiant">Étudiants</SelectItem>
             <SelectItem value="investisseur">Investisseurs</SelectItem>
+            <SelectItem value="cadre">Cadres</SelectItem>
           </SelectContent>
         </Select>
         <Input placeholder="Région" value={region} onChange={(e) => setRegion(e.target.value)} />
