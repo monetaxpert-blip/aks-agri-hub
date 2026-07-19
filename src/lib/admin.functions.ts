@@ -71,6 +71,7 @@ export const getAdminStats = createServerFn({ method: "GET" })
         agriculteurs: ps.filter((p) => p.type_profil === "agriculteur").length,
         etudiants: ps.filter((p) => p.type_profil === "etudiant").length,
         investisseurs: ps.filter((p) => p.type_profil === "investisseur").length,
+        cadres: ps.filter((p) => p.type_profil === "cadre").length,
         annonces: asr.length,
         annoncesPending: asr.filter((a) => a.statut === "pending").length,
         annoncesValidated: asr.filter((a) => a.statut === "validated").length,

@@ -244,24 +244,45 @@ export type Database = {
       investisseur_details: {
         Row: {
           capacite_investissement: string | null
+          domaine_interet: string | null
+          experience: string | null
+          fonction: string | null
           organisation: string | null
+          pays: string | null
+          profession: string | null
+          secteur_activite: string | null
           secteurs_interet: string | null
           updated_at: string
           user_id: string
+          ville: string | null
         }
         Insert: {
           capacite_investissement?: string | null
+          domaine_interet?: string | null
+          experience?: string | null
+          fonction?: string | null
           organisation?: string | null
+          pays?: string | null
+          profession?: string | null
+          secteur_activite?: string | null
           secteurs_interet?: string | null
           updated_at?: string
           user_id: string
+          ville?: string | null
         }
         Update: {
           capacite_investissement?: string | null
+          domaine_interet?: string | null
+          experience?: string | null
+          fonction?: string | null
           organisation?: string | null
+          pays?: string | null
+          profession?: string | null
+          secteur_activite?: string | null
           secteurs_interet?: string | null
           updated_at?: string
           user_id?: string
+          ville?: string | null
         }
         Relationships: []
       }
@@ -471,7 +492,7 @@ export type Database = {
       app_role: "admin" | "user"
       rdv_mode: "presentiel" | "visio" | "whatsapp"
       rdv_statut: "pending" | "planifie" | "termine" | "annule"
-      type_profil: "agriculteur" | "etudiant" | "investisseur"
+      type_profil: "agriculteur" | "etudiant" | "investisseur" | "cadre"
       user_statut: "active" | "suspended"
     }
     CompositeTypes: {
@@ -604,7 +625,7 @@ export const Constants = {
       app_role: ["admin", "user"],
       rdv_mode: ["presentiel", "visio", "whatsapp"],
       rdv_statut: ["pending", "planifie", "termine", "annule"],
-      type_profil: ["agriculteur", "etudiant", "investisseur"],
+      type_profil: ["agriculteur", "etudiant", "investisseur", "cadre"],
       user_statut: ["active", "suspended"],
     },
   },

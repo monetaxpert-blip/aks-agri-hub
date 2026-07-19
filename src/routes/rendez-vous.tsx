@@ -78,6 +78,7 @@ function RdvPage() {
                 <SelectItem value="agriculteur">Agriculteur</SelectItem>
                 <SelectItem value="etudiant">Étudiant</SelectItem>
                 <SelectItem value="investisseur">Investisseur</SelectItem>
+                <SelectItem value="cadre">Cadre</SelectItem>
                 <SelectItem value="autre">Autre</SelectItem>
               </SelectContent>
             </Select>

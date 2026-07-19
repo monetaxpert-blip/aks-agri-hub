@@ -3,7 +3,7 @@ import { z } from "zod";
 export const emailSchema = z.string().trim().email("Email invalide").max(255);
 export const phoneSchema = z.string().trim().min(5, "Téléphone invalide").max(30);
 
-export const typeProfilSchema = z.enum(["agriculteur", "etudiant", "investisseur"]);
+export const typeProfilSchema = z.enum(["agriculteur", "etudiant", "investisseur", "cadre"]);
 
 export const registerSchema = z.object({
   prenom: z.string().trim().min(2).max(80),
@@ -14,6 +14,19 @@ export const registerSchema = z.object({
   type_profil: typeProfilSchema,
   region: z.string().trim().max(80).optional().default(""),
   commune: z.string().trim().max(80).optional().default(""),
+});
+
+// Champs professionnels enrichis (Investisseurs & Cadres)
+export const proDetailsSchema = z.object({
+  profession: z.string().trim().max(120).optional().default(""),
+  organisation: z.string().trim().max(160).optional().default(""),
+  fonction: z.string().trim().max(120).optional().default(""),
+  secteur_activite: z.string().trim().max(120).optional().default(""),
+  pays: z.string().trim().max(80).optional().default(""),
+  ville: z.string().trim().max(80).optional().default(""),
+  capacite_investissement: z.string().trim().max(120).optional().default(""),
+  domaine_interet: z.string().trim().max(200).optional().default(""),
+  experience: z.string().trim().max(1000).optional().default(""),
 });
 
 export const contactSchema = z.object({
