@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact")({
     meta: [
       { title: "Contact — AgroKonnecte Sénégal" },
       { name: "description", content: "Contactez l'équipe AgroKonnecte Sénégal par formulaire, téléphone, email ou WhatsApp." },
-      { property: "og:title", content: "Contact — AKS" },
+      { property: "og:title", content: "Contact AKS" },
       { property: "og:description", content: "Écrivez-nous, appelez-nous ou passez par WhatsApp." },
     ],
   }),
