@@ -9,10 +9,10 @@ import { listPartenaires } from "@/lib/public.functions";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AgroKonnecte Sénégal — Carrefour digital de l'agriculture" },
+      { title: "AgroKonnecte Sénégal, Carrefour digital de l'agriculture" },
       { name: "description", content: "AgroKonnecte Sénégal est l'espace digital dédié au secteur agricole. Nous connectons agriculteurs, étudiants, investisseurs et cadres de manière sécurisée, simple et efficace pour faciliter le développement de projets à fort impact." },
-      { property: "og:title", content: "AgroKonnecte Sénégal — Carrefour digital de l'agriculture" },
-      { property: "og:description", content: "Agriculteurs • Étudiants • Investisseurs • Cadres — bienvenue dans votre carrefour digital agricole." },
+      { property: "og:title", content: "AgroKonnecte Sénégal Carrefour digital de l'agriculture" },
+      { property: "og:description", content: "Agriculteurs • Étudiants • Investisseurs • Cadres bienvenue dans votre carrefour digital agricole." },
     ],
   }),
   component: Home,
@@ -63,7 +63,7 @@ function Home() {
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-base text-white/90 md:text-lg">
-              Agro Konnecte Sénégal est l'espace digital dédié au secteur agricole. Nous connectons les acteurs du monde agricole — de manière sécurisée, simple et efficace — afin de faciliter le développement de projets à fort impact.
+              Agro Konnecte Sénégal est l'espace digital dédié au secteur agricole. Nous connectons les acteurs du monde agricole de manière sécurisée, simple et efficace afin de faciliter le développement de projets à fort impact.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/auth/register"><PremiumButton size="lg">Commencer</PremiumButton></Link>
@@ -93,7 +93,7 @@ function Home() {
                 sans espace commun pour se rencontrer, échanger et bâtir ensemble.
               </p>
               <p>
-                <strong className="text-foreground">Agro Konnecte Sénégal</strong> est né de ce constat : il manquait un lieu — digital, sécurisé et humain —
+                <strong className="text-foreground">Agro Konnecte Sénégal</strong> est né de ce constat : il manquait un lieu digital, sécurisé et humain
                 capable de rassembler tous ces acteurs autour d'un même objectif : faire grandir l'agriculture sénégalaise.
               </p>
               <p>
@@ -101,7 +101,7 @@ function Home() {
                 Chaque demande est étudiée par notre équipe pour garantir des mises en relation utiles, cohérentes et respectueuses de la confidentialité de chacun.
               </p>
               <p>
-                Aujourd'hui, Agro Konnecte Sénégal, c'est un carrefour digital où l'expertise, l'ambition et la terre se rencontrent —
+                Aujourd'hui, Agro Konnecte Sénégal, c'est un carrefour digital où l'expertise, l'ambition et la terre se rencontrent
                 pour <strong className="text-foreground">connecter, investir, innover et cultiver l'avenir</strong>.
               </p>
             </motion.div>
@@ -112,7 +112,7 @@ function Home() {
               </div>
               <div className="absolute -bottom-4 -left-4 hidden rounded-2xl bg-white p-4 shadow-premium md:block">
                 <p className="font-display text-xs font-bold uppercase tracking-widest text-primary">Notre promesse</p>
-                <p className="mt-1 max-w-[220px] text-sm text-foreground">Sécurité, simplicité, efficacité — au service de l'agriculture sénégalaise.</p>
+                <p className="mt-1 max-w-[220px] text-sm text-foreground">Sécurité, simplicité, efficacité au service de l'agriculture sénégalaise.</p>
               </div>
             </motion.div>
           </div>
@@ -137,7 +137,7 @@ function Home() {
       <section className="mx-auto max-w-7xl px-4 py-20 md:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-extrabold md:text-4xl">Quatre profils, un écosystème.</h2>
-          <p className="mt-3 text-muted-foreground">La plateforme ne connecte jamais les utilisateurs directement — chaque demande est étudiée par notre équipe.</p>
+          <p className="mt-3 text-muted-foreground">La plateforme ne connecte jamais les utilisateurs directement chaque demande est étudiée par notre équipe.</p>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {profils.map((p, i) => (
