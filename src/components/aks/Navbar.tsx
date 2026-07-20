@@ -12,6 +12,10 @@ const links = [
   { to: "/comment-ca-marche", label: "Comment ça marche" },
   { to: "/partenaires", label: "Partenaires" },
   { to: "/contact", label: "Contact" },
+  {
+  label: "Notre Histoire",
+  href: "/notre-histoire"
+}
 ];
 
 export function Navbar() {
