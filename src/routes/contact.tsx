@@ -63,7 +63,7 @@ function Contact() {
       <div className="grid gap-10 md:grid-cols-[2fr_1fr]">
         <div>
           <h1 className="font-display text-4xl font-extrabold md:text-5xl">Contactez-nous</h1>
-          <p className="mt-3 text-muted-foreground">Écrivez-nous — votre message est envoyé à notre équipe et une conversation WhatsApp s'ouvre pour un suivi rapide.</p>
+          <p className="mt-3 text-muted-foreground">Écrivez-nous votre message est envoyé à notre équipe et une conversation WhatsApp s'ouvre pour un suivi rapide.</p>
           <form onSubmit={onSubmit} className="mt-8 space-y-4">
             <input type="text" name="hp" tabIndex={-1} autoComplete="off" className="hidden" />
             <div className="grid gap-4 sm:grid-cols-2">
