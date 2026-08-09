@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { getMyAnnonceurSpace, saveAnnonceurDetails } from "@/lib/ads.functions";
 import { annonceurDetailsSchema } from "@/lib/schemas";
+import type { z } from "zod";
 import { PremiumButton } from "@/components/aks/PremiumButton";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -29,7 +30,7 @@ function FicheAnnonceur() {
   const d = data?.details;
 
   const save = useMutation({
-    mutationFn: (v: Parameters<typeof saveAnnonceurDetails>[0]["data"]) => saveAnnonceurDetails({ data: v }),
+    mutationFn: (v: z.infer<typeof annonceurDetailsSchema>) => saveAnnonceurDetails({ data: v }),
     onSuccess: () => {
       toast.success("Fiche enregistrée");
       qc.invalidateQueries({ queryKey: ["annonceur-space"] });
