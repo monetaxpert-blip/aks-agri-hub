@@ -31,6 +31,7 @@ import { Route as AuthenticatedAdminPartenairesRouteImport } from './routes/_aut
 import { Route as AuthenticatedAdminContactsRouteImport } from './routes/_authenticated/admin.contacts'
 import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
 import { Route as AuthenticatedAdminAnnoncesRouteImport } from './routes/_authenticated/admin.annonces'
+import { Route as AuthenticatedDashboardPublicitesIndexRouteImport } from './routes/_authenticated/dashboard.publicites.index'
 import { Route as AuthenticatedDashboardAnnoncesIndexRouteImport } from './routes/_authenticated/dashboard.annonces.index'
 import { Route as AuthenticatedDashboardAnnoncesNouvelleRouteImport } from './routes/_authenticated/dashboard.annonces.nouvelle'
 import { Route as AuthenticatedAdminUtilisateursIdRouteImport } from './routes/_authenticated/admin.utilisateurs.$id'
@@ -152,6 +153,12 @@ const AuthenticatedAdminAnnoncesRoute =
     path: '/admin/annonces',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedDashboardPublicitesIndexRoute =
+  AuthenticatedDashboardPublicitesIndexRouteImport.update({
+    id: '/dashboard/publicites/',
+    path: '/dashboard/publicites/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDashboardAnnoncesIndexRoute =
   AuthenticatedDashboardAnnoncesIndexRouteImport.update({
     id: '/dashboard/annonces/',
@@ -196,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
   '/dashboard/annonces/': typeof AuthenticatedDashboardAnnoncesIndexRoute
+  '/dashboard/publicites/': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -222,6 +230,7 @@ export interface FileRoutesByTo {
   '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
   '/dashboard/annonces': typeof AuthenticatedDashboardAnnoncesIndexRoute
+  '/dashboard/publicites': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -250,6 +259,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/_authenticated/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
   '/_authenticated/dashboard/annonces/': typeof AuthenticatedDashboardAnnoncesIndexRoute
+  '/_authenticated/dashboard/publicites/': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -278,6 +288,7 @@ export interface FileRouteTypes {
     | '/admin/utilisateurs/$id'
     | '/dashboard/annonces/nouvelle'
     | '/dashboard/annonces/'
+    | '/dashboard/publicites/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -304,6 +315,7 @@ export interface FileRouteTypes {
     | '/admin/utilisateurs/$id'
     | '/dashboard/annonces/nouvelle'
     | '/dashboard/annonces'
+    | '/dashboard/publicites'
   id:
     | '__root__'
     | '/'
@@ -331,6 +343,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/utilisateurs/$id'
     | '/_authenticated/dashboard/annonces/nouvelle'
     | '/_authenticated/dashboard/annonces/'
+    | '/_authenticated/dashboard/publicites/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -504,6 +517,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminAnnoncesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/dashboard/publicites/': {
+      id: '/_authenticated/dashboard/publicites/'
+      path: '/dashboard/publicites'
+      fullPath: '/dashboard/publicites/'
+      preLoaderRoute: typeof AuthenticatedDashboardPublicitesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard/annonces/': {
       id: '/_authenticated/dashboard/annonces/'
       path: '/dashboard/annonces'
@@ -556,6 +576,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
   AuthenticatedDashboardAnnoncesNouvelleRoute: typeof AuthenticatedDashboardAnnoncesNouvelleRoute
   AuthenticatedDashboardAnnoncesIndexRoute: typeof AuthenticatedDashboardAnnoncesIndexRoute
+  AuthenticatedDashboardPublicitesIndexRoute: typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -574,6 +595,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
     AuthenticatedDashboardAnnoncesNouvelleRoute,
   AuthenticatedDashboardAnnoncesIndexRoute:
     AuthenticatedDashboardAnnoncesIndexRoute,
+  AuthenticatedDashboardPublicitesIndexRoute:
+    AuthenticatedDashboardPublicitesIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -596,13 +619,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
