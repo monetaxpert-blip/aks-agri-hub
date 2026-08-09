@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.publicites_guard_owner_changes() FROM PUBLIC, anon, authenticated;
