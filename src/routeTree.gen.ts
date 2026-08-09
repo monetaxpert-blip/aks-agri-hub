@@ -33,6 +33,7 @@ import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminAnnoncesRouteImport } from './routes/_authenticated/admin.annonces'
 import { Route as AuthenticatedDashboardPublicitesIndexRouteImport } from './routes/_authenticated/dashboard.publicites.index'
 import { Route as AuthenticatedDashboardAnnoncesIndexRouteImport } from './routes/_authenticated/dashboard.annonces.index'
+import { Route as AuthenticatedDashboardPublicitesNouvelleRouteImport } from './routes/_authenticated/dashboard.publicites.nouvelle'
 import { Route as AuthenticatedDashboardAnnoncesNouvelleRouteImport } from './routes/_authenticated/dashboard.annonces.nouvelle'
 import { Route as AuthenticatedAdminUtilisateursIdRouteImport } from './routes/_authenticated/admin.utilisateurs.$id'
 
@@ -165,6 +166,12 @@ const AuthenticatedDashboardAnnoncesIndexRoute =
     path: '/dashboard/annonces/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedDashboardPublicitesNouvelleRoute =
+  AuthenticatedDashboardPublicitesNouvelleRouteImport.update({
+    id: '/dashboard/publicites/nouvelle',
+    path: '/dashboard/publicites/nouvelle',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDashboardAnnoncesNouvelleRoute =
   AuthenticatedDashboardAnnoncesNouvelleRouteImport.update({
     id: '/dashboard/annonces/nouvelle',
@@ -202,6 +209,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/': typeof AuthenticatedDashboardIndexRoute
   '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  '/dashboard/publicites/nouvelle': typeof AuthenticatedDashboardPublicitesNouvelleRoute
   '/dashboard/annonces/': typeof AuthenticatedDashboardAnnoncesIndexRoute
   '/dashboard/publicites/': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
@@ -229,6 +237,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardIndexRoute
   '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  '/dashboard/publicites/nouvelle': typeof AuthenticatedDashboardPublicitesNouvelleRoute
   '/dashboard/annonces': typeof AuthenticatedDashboardAnnoncesIndexRoute
   '/dashboard/publicites': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
@@ -258,6 +267,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
   '/_authenticated/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/_authenticated/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  '/_authenticated/dashboard/publicites/nouvelle': typeof AuthenticatedDashboardPublicitesNouvelleRoute
   '/_authenticated/dashboard/annonces/': typeof AuthenticatedDashboardAnnoncesIndexRoute
   '/_authenticated/dashboard/publicites/': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
@@ -287,6 +297,7 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/admin/utilisateurs/$id'
     | '/dashboard/annonces/nouvelle'
+    | '/dashboard/publicites/nouvelle'
     | '/dashboard/annonces/'
     | '/dashboard/publicites/'
   fileRoutesByTo: FileRoutesByTo
@@ -314,6 +325,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/admin/utilisateurs/$id'
     | '/dashboard/annonces/nouvelle'
+    | '/dashboard/publicites/nouvelle'
     | '/dashboard/annonces'
     | '/dashboard/publicites'
   id:
@@ -342,6 +354,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard/'
     | '/_authenticated/admin/utilisateurs/$id'
     | '/_authenticated/dashboard/annonces/nouvelle'
+    | '/_authenticated/dashboard/publicites/nouvelle'
     | '/_authenticated/dashboard/annonces/'
     | '/_authenticated/dashboard/publicites/'
   fileRoutesById: FileRoutesById
@@ -531,6 +544,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardAnnoncesIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/dashboard/publicites/nouvelle': {
+      id: '/_authenticated/dashboard/publicites/nouvelle'
+      path: '/dashboard/publicites/nouvelle'
+      fullPath: '/dashboard/publicites/nouvelle'
+      preLoaderRoute: typeof AuthenticatedDashboardPublicitesNouvelleRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard/annonces/nouvelle': {
       id: '/_authenticated/dashboard/annonces/nouvelle'
       path: '/dashboard/annonces/nouvelle'
@@ -575,6 +595,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
   AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
   AuthenticatedDashboardAnnoncesNouvelleRoute: typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  AuthenticatedDashboardPublicitesNouvelleRoute: typeof AuthenticatedDashboardPublicitesNouvelleRoute
   AuthenticatedDashboardAnnoncesIndexRoute: typeof AuthenticatedDashboardAnnoncesIndexRoute
   AuthenticatedDashboardPublicitesIndexRoute: typeof AuthenticatedDashboardPublicitesIndexRoute
 }
@@ -593,6 +614,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardIndexRoute: AuthenticatedDashboardIndexRoute,
   AuthenticatedDashboardAnnoncesNouvelleRoute:
     AuthenticatedDashboardAnnoncesNouvelleRoute,
+  AuthenticatedDashboardPublicitesNouvelleRoute:
+    AuthenticatedDashboardPublicitesNouvelleRoute,
   AuthenticatedDashboardAnnoncesIndexRoute:
     AuthenticatedDashboardAnnoncesIndexRoute,
   AuthenticatedDashboardPublicitesIndexRoute:
