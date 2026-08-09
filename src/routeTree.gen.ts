@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RendezVousRouteImport } from './routes/rendez-vous'
 import { Route as PartenairesRouteImport } from './routes/partenaires'
+import { Route as NotreHistoireRouteImport } from './routes/notre-histoire'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CommentCaMarcheRouteImport } from './routes/comment-ca-marche'
 import { Route as AProposRouteImport } from './routes/a-propos'
@@ -24,13 +25,17 @@ import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authe
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedDashboardRendezVousRouteImport } from './routes/_authenticated/dashboard.rendez-vous'
 import { Route as AuthenticatedDashboardProfilRouteImport } from './routes/_authenticated/dashboard.profil'
+import { Route as AuthenticatedDashboardAnnonceurRouteImport } from './routes/_authenticated/dashboard.annonceur'
 import { Route as AuthenticatedAdminUtilisateursRouteImport } from './routes/_authenticated/admin.utilisateurs'
 import { Route as AuthenticatedAdminRendezVousRouteImport } from './routes/_authenticated/admin.rendez-vous'
+import { Route as AuthenticatedAdminPublicitesRouteImport } from './routes/_authenticated/admin.publicites'
 import { Route as AuthenticatedAdminPartenairesRouteImport } from './routes/_authenticated/admin.partenaires'
 import { Route as AuthenticatedAdminContactsRouteImport } from './routes/_authenticated/admin.contacts'
 import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
 import { Route as AuthenticatedAdminAnnoncesRouteImport } from './routes/_authenticated/admin.annonces'
+import { Route as AuthenticatedDashboardPublicitesIndexRouteImport } from './routes/_authenticated/dashboard.publicites.index'
 import { Route as AuthenticatedDashboardAnnoncesIndexRouteImport } from './routes/_authenticated/dashboard.annonces.index'
+import { Route as AuthenticatedDashboardPublicitesNouvelleRouteImport } from './routes/_authenticated/dashboard.publicites.nouvelle'
 import { Route as AuthenticatedDashboardAnnoncesNouvelleRouteImport } from './routes/_authenticated/dashboard.annonces.nouvelle'
 import { Route as AuthenticatedAdminUtilisateursIdRouteImport } from './routes/_authenticated/admin.utilisateurs.$id'
 
@@ -42,6 +47,11 @@ const RendezVousRoute = RendezVousRouteImport.update({
 const PartenairesRoute = PartenairesRouteImport.update({
   id: '/partenaires',
   path: '/partenaires',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotreHistoireRoute = NotreHistoireRouteImport.update({
+  id: '/notre-histoire',
+  path: '/notre-histoire',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -111,6 +121,12 @@ const AuthenticatedDashboardProfilRoute =
     path: '/dashboard/profil',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedDashboardAnnonceurRoute =
+  AuthenticatedDashboardAnnonceurRouteImport.update({
+    id: '/dashboard/annonceur',
+    path: '/dashboard/annonceur',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAdminUtilisateursRoute =
   AuthenticatedAdminUtilisateursRouteImport.update({
     id: '/admin/utilisateurs',
@@ -121,6 +137,12 @@ const AuthenticatedAdminRendezVousRoute =
   AuthenticatedAdminRendezVousRouteImport.update({
     id: '/admin/rendez-vous',
     path: '/admin/rendez-vous',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminPublicitesRoute =
+  AuthenticatedAdminPublicitesRouteImport.update({
+    id: '/admin/publicites',
+    path: '/admin/publicites',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedAdminPartenairesRoute =
@@ -146,10 +168,22 @@ const AuthenticatedAdminAnnoncesRoute =
     path: '/admin/annonces',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedDashboardPublicitesIndexRoute =
+  AuthenticatedDashboardPublicitesIndexRouteImport.update({
+    id: '/dashboard/publicites/',
+    path: '/dashboard/publicites/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDashboardAnnoncesIndexRoute =
   AuthenticatedDashboardAnnoncesIndexRouteImport.update({
     id: '/dashboard/annonces/',
     path: '/dashboard/annonces/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardPublicitesNouvelleRoute =
+  AuthenticatedDashboardPublicitesNouvelleRouteImport.update({
+    id: '/dashboard/publicites/nouvelle',
+    path: '/dashboard/publicites/nouvelle',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedDashboardAnnoncesNouvelleRoute =
@@ -170,6 +204,7 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/notre-histoire': typeof NotreHistoireRoute
   '/partenaires': typeof PartenairesRoute
   '/rendez-vous': typeof RendezVousRoute
   '/admin/login': typeof AdminLoginRoute
@@ -180,21 +215,26 @@ export interface FileRoutesByFullPath {
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/contacts': typeof AuthenticatedAdminContactsRoute
   '/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/admin/publicites': typeof AuthenticatedAdminPublicitesRoute
   '/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
   '/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  '/dashboard/annonceur': typeof AuthenticatedDashboardAnnonceurRoute
   '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
   '/dashboard/rendez-vous': typeof AuthenticatedDashboardRendezVousRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/dashboard/': typeof AuthenticatedDashboardIndexRoute
   '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  '/dashboard/publicites/nouvelle': typeof AuthenticatedDashboardPublicitesNouvelleRoute
   '/dashboard/annonces/': typeof AuthenticatedDashboardAnnoncesIndexRoute
+  '/dashboard/publicites/': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/notre-histoire': typeof NotreHistoireRoute
   '/partenaires': typeof PartenairesRoute
   '/rendez-vous': typeof RendezVousRoute
   '/admin/login': typeof AdminLoginRoute
@@ -205,15 +245,19 @@ export interface FileRoutesByTo {
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/contacts': typeof AuthenticatedAdminContactsRoute
   '/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/admin/publicites': typeof AuthenticatedAdminPublicitesRoute
   '/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
   '/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  '/dashboard/annonceur': typeof AuthenticatedDashboardAnnonceurRoute
   '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
   '/dashboard/rendez-vous': typeof AuthenticatedDashboardRendezVousRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/dashboard': typeof AuthenticatedDashboardIndexRoute
   '/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  '/dashboard/publicites/nouvelle': typeof AuthenticatedDashboardPublicitesNouvelleRoute
   '/dashboard/annonces': typeof AuthenticatedDashboardAnnoncesIndexRoute
+  '/dashboard/publicites': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -222,6 +266,7 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/notre-histoire': typeof NotreHistoireRoute
   '/partenaires': typeof PartenairesRoute
   '/rendez-vous': typeof RendezVousRoute
   '/admin/login': typeof AdminLoginRoute
@@ -232,15 +277,19 @@ export interface FileRoutesById {
   '/_authenticated/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/_authenticated/admin/contacts': typeof AuthenticatedAdminContactsRoute
   '/_authenticated/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/_authenticated/admin/publicites': typeof AuthenticatedAdminPublicitesRoute
   '/_authenticated/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
   '/_authenticated/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  '/_authenticated/dashboard/annonceur': typeof AuthenticatedDashboardAnnonceurRoute
   '/_authenticated/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
   '/_authenticated/dashboard/rendez-vous': typeof AuthenticatedDashboardRendezVousRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
   '/_authenticated/admin/utilisateurs/$id': typeof AuthenticatedAdminUtilisateursIdRoute
   '/_authenticated/dashboard/annonces/nouvelle': typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  '/_authenticated/dashboard/publicites/nouvelle': typeof AuthenticatedDashboardPublicitesNouvelleRoute
   '/_authenticated/dashboard/annonces/': typeof AuthenticatedDashboardAnnoncesIndexRoute
+  '/_authenticated/dashboard/publicites/': typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -249,6 +298,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
+    | '/notre-histoire'
     | '/partenaires'
     | '/rendez-vous'
     | '/admin/login'
@@ -259,21 +309,26 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/contacts'
     | '/admin/partenaires'
+    | '/admin/publicites'
     | '/admin/rendez-vous'
     | '/admin/utilisateurs'
+    | '/dashboard/annonceur'
     | '/dashboard/profil'
     | '/dashboard/rendez-vous'
     | '/admin/'
     | '/dashboard/'
     | '/admin/utilisateurs/$id'
     | '/dashboard/annonces/nouvelle'
+    | '/dashboard/publicites/nouvelle'
     | '/dashboard/annonces/'
+    | '/dashboard/publicites/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
+    | '/notre-histoire'
     | '/partenaires'
     | '/rendez-vous'
     | '/admin/login'
@@ -284,15 +339,19 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/contacts'
     | '/admin/partenaires'
+    | '/admin/publicites'
     | '/admin/rendez-vous'
     | '/admin/utilisateurs'
+    | '/dashboard/annonceur'
     | '/dashboard/profil'
     | '/dashboard/rendez-vous'
     | '/admin'
     | '/dashboard'
     | '/admin/utilisateurs/$id'
     | '/dashboard/annonces/nouvelle'
+    | '/dashboard/publicites/nouvelle'
     | '/dashboard/annonces'
+    | '/dashboard/publicites'
   id:
     | '__root__'
     | '/'
@@ -300,6 +359,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
+    | '/notre-histoire'
     | '/partenaires'
     | '/rendez-vous'
     | '/admin/login'
@@ -310,15 +370,19 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/audit'
     | '/_authenticated/admin/contacts'
     | '/_authenticated/admin/partenaires'
+    | '/_authenticated/admin/publicites'
     | '/_authenticated/admin/rendez-vous'
     | '/_authenticated/admin/utilisateurs'
+    | '/_authenticated/dashboard/annonceur'
     | '/_authenticated/dashboard/profil'
     | '/_authenticated/dashboard/rendez-vous'
     | '/_authenticated/admin/'
     | '/_authenticated/dashboard/'
     | '/_authenticated/admin/utilisateurs/$id'
     | '/_authenticated/dashboard/annonces/nouvelle'
+    | '/_authenticated/dashboard/publicites/nouvelle'
     | '/_authenticated/dashboard/annonces/'
+    | '/_authenticated/dashboard/publicites/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -327,6 +391,7 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   CommentCaMarcheRoute: typeof CommentCaMarcheRoute
   ContactRoute: typeof ContactRoute
+  NotreHistoireRoute: typeof NotreHistoireRoute
   PartenairesRoute: typeof PartenairesRoute
   RendezVousRoute: typeof RendezVousRoute
   AdminLoginRoute: typeof AdminLoginRoute
@@ -349,6 +414,13 @@ declare module '@tanstack/react-router' {
       path: '/partenaires'
       fullPath: '/partenaires'
       preLoaderRoute: typeof PartenairesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notre-histoire': {
+      id: '/notre-histoire'
+      path: '/notre-histoire'
+      fullPath: '/notre-histoire'
+      preLoaderRoute: typeof NotreHistoireRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -442,6 +514,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardProfilRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/dashboard/annonceur': {
+      id: '/_authenticated/dashboard/annonceur'
+      path: '/dashboard/annonceur'
+      fullPath: '/dashboard/annonceur'
+      preLoaderRoute: typeof AuthenticatedDashboardAnnonceurRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/admin/utilisateurs': {
       id: '/_authenticated/admin/utilisateurs'
       path: '/admin/utilisateurs'
@@ -454,6 +533,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/rendez-vous'
       fullPath: '/admin/rendez-vous'
       preLoaderRoute: typeof AuthenticatedAdminRendezVousRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/publicites': {
+      id: '/_authenticated/admin/publicites'
+      path: '/admin/publicites'
+      fullPath: '/admin/publicites'
+      preLoaderRoute: typeof AuthenticatedAdminPublicitesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/admin/partenaires': {
@@ -484,11 +570,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminAnnoncesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/dashboard/publicites/': {
+      id: '/_authenticated/dashboard/publicites/'
+      path: '/dashboard/publicites'
+      fullPath: '/dashboard/publicites/'
+      preLoaderRoute: typeof AuthenticatedDashboardPublicitesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard/annonces/': {
       id: '/_authenticated/dashboard/annonces/'
       path: '/dashboard/annonces'
       fullPath: '/dashboard/annonces/'
       preLoaderRoute: typeof AuthenticatedDashboardAnnoncesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard/publicites/nouvelle': {
+      id: '/_authenticated/dashboard/publicites/nouvelle'
+      path: '/dashboard/publicites/nouvelle'
+      fullPath: '/dashboard/publicites/nouvelle'
+      preLoaderRoute: typeof AuthenticatedDashboardPublicitesNouvelleRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/dashboard/annonces/nouvelle': {
@@ -528,14 +628,18 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminAuditRoute: typeof AuthenticatedAdminAuditRoute
   AuthenticatedAdminContactsRoute: typeof AuthenticatedAdminContactsRoute
   AuthenticatedAdminPartenairesRoute: typeof AuthenticatedAdminPartenairesRoute
+  AuthenticatedAdminPublicitesRoute: typeof AuthenticatedAdminPublicitesRoute
   AuthenticatedAdminRendezVousRoute: typeof AuthenticatedAdminRendezVousRoute
   AuthenticatedAdminUtilisateursRoute: typeof AuthenticatedAdminUtilisateursRouteWithChildren
+  AuthenticatedDashboardAnnonceurRoute: typeof AuthenticatedDashboardAnnonceurRoute
   AuthenticatedDashboardProfilRoute: typeof AuthenticatedDashboardProfilRoute
   AuthenticatedDashboardRendezVousRoute: typeof AuthenticatedDashboardRendezVousRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
   AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
   AuthenticatedDashboardAnnoncesNouvelleRoute: typeof AuthenticatedDashboardAnnoncesNouvelleRoute
+  AuthenticatedDashboardPublicitesNouvelleRoute: typeof AuthenticatedDashboardPublicitesNouvelleRoute
   AuthenticatedDashboardAnnoncesIndexRoute: typeof AuthenticatedDashboardAnnoncesIndexRoute
+  AuthenticatedDashboardPublicitesIndexRoute: typeof AuthenticatedDashboardPublicitesIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -543,17 +647,23 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminAuditRoute: AuthenticatedAdminAuditRoute,
   AuthenticatedAdminContactsRoute: AuthenticatedAdminContactsRoute,
   AuthenticatedAdminPartenairesRoute: AuthenticatedAdminPartenairesRoute,
+  AuthenticatedAdminPublicitesRoute: AuthenticatedAdminPublicitesRoute,
   AuthenticatedAdminRendezVousRoute: AuthenticatedAdminRendezVousRoute,
   AuthenticatedAdminUtilisateursRoute:
     AuthenticatedAdminUtilisateursRouteWithChildren,
+  AuthenticatedDashboardAnnonceurRoute: AuthenticatedDashboardAnnonceurRoute,
   AuthenticatedDashboardProfilRoute: AuthenticatedDashboardProfilRoute,
   AuthenticatedDashboardRendezVousRoute: AuthenticatedDashboardRendezVousRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
   AuthenticatedDashboardIndexRoute: AuthenticatedDashboardIndexRoute,
   AuthenticatedDashboardAnnoncesNouvelleRoute:
     AuthenticatedDashboardAnnoncesNouvelleRoute,
+  AuthenticatedDashboardPublicitesNouvelleRoute:
+    AuthenticatedDashboardPublicitesNouvelleRoute,
   AuthenticatedDashboardAnnoncesIndexRoute:
     AuthenticatedDashboardAnnoncesIndexRoute,
+  AuthenticatedDashboardPublicitesIndexRoute:
+    AuthenticatedDashboardPublicitesIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -565,6 +675,7 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   CommentCaMarcheRoute: CommentCaMarcheRoute,
   ContactRoute: ContactRoute,
+  NotreHistoireRoute: NotreHistoireRoute,
   PartenairesRoute: PartenairesRoute,
   RendezVousRoute: RendezVousRoute,
   AdminLoginRoute: AdminLoginRoute,

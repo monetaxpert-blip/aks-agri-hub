@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Logo } from "@/components/aks/Logo";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, User, FileText, CalendarClock, LogOut, Shield } from "lucide-react";
+import { LayoutDashboard, User, FileText, CalendarClock, LogOut, Shield, Megaphone, Building2 } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
@@ -19,12 +19,15 @@ function AuthLayout() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isAdmin = pathname.startsWith("/admin");
   const [role, setRole] = useState<"admin" | "user" | null>(null);
+  const [isAnnonceur, setIsAnnonceur] = useState(false);
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
       if (!data.user) return;
       const { data: roles } = await supabase.from("user_roles").select("role").eq("user_id", data.user.id);
       setRole(roles?.some((r) => r.role === "admin") ? "admin" : "user");
+      const { data: profile } = await supabase.from("profiles").select("type_profil").eq("id", data.user.id).maybeSingle();
+      setIsAnnonceur(profile?.type_profil === "annonceur");
     });
   }, []);
 
@@ -38,12 +41,19 @@ function AuthLayout() {
     { to: "/dashboard/profil", label: "Mon profil", icon: User },
     { to: "/dashboard/annonces", label: "Mes annonces", icon: FileText },
     { to: "/dashboard/rendez-vous", label: "Mes rendez-vous", icon: CalendarClock },
+    ...(isAnnonceur
+      ? [
+          { to: "/dashboard/annonceur", label: "Ma fiche annonceur", icon: Building2 },
+          { to: "/dashboard/publicites", label: "Mes publicités", icon: Megaphone },
+        ]
+      : []),
   ];
   const adminLinks = [
     { to: "/admin", label: "Vue d'ensemble", icon: LayoutDashboard },
     { to: "/admin/utilisateurs", label: "Utilisateurs", icon: User },
     { to: "/admin/annonces", label: "Annonces", icon: FileText },
     { to: "/admin/rendez-vous", label: "Rendez-vous", icon: CalendarClock },
+    { to: "/admin/publicites", label: "Publicités", icon: Megaphone },
     { to: "/admin/contacts", label: "Contacts", icon: FileText },
     { to: "/admin/partenaires", label: "Partenaires", icon: FileText },
     { to: "/admin/audit", label: "Journal d'activité", icon: Shield },

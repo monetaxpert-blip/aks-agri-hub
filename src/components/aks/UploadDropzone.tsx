@@ -13,7 +13,7 @@ export interface UploadedFile {
 }
 
 interface Props {
-  bucket: "annonces" | "avatars";
+  bucket: "annonces" | "avatars" | "publicites";
   userId: string;
   onChange: (files: UploadedFile[]) => void;
   value: UploadedFile[];

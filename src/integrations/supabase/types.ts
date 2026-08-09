@@ -181,6 +181,54 @@ export type Database = {
         }
         Relationships: []
       }
+      annonceur_details: {
+        Row: {
+          created_at: string
+          description: string | null
+          email: string | null
+          entreprise: string
+          infos_complementaires: string | null
+          localisation: string | null
+          logo_url: string | null
+          responsable: string | null
+          secteur_activite: string | null
+          site_web: string | null
+          telephone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          entreprise?: string
+          infos_complementaires?: string | null
+          localisation?: string | null
+          logo_url?: string | null
+          responsable?: string | null
+          secteur_activite?: string | null
+          site_web?: string | null
+          telephone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          entreprise?: string
+          infos_complementaires?: string | null
+          localisation?: string | null
+          logo_url?: string | null
+          responsable?: string | null
+          secteur_activite?: string | null
+          site_web?: string | null
+          telephone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       contacts: {
         Row: {
           created_at: string
@@ -385,6 +433,78 @@ export type Database = {
         }
         Relationships: []
       }
+      publicites: {
+        Row: {
+          admin_notes: string | null
+          contact_email: string | null
+          contact_nom: string | null
+          contact_telephone: string | null
+          created_at: string
+          date_debut: string | null
+          date_fin: string | null
+          description: string | null
+          id: string
+          lien_url: string | null
+          media_path: string | null
+          media_type: Database["public"]["Enums"]["pub_media"]
+          media_url: string
+          ordre: number
+          periode_souhaitee_debut: string | null
+          periode_souhaitee_fin: string | null
+          placement: Database["public"]["Enums"]["pub_placement"]
+          statut: Database["public"]["Enums"]["pub_statut"]
+          titre: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          contact_email?: string | null
+          contact_nom?: string | null
+          contact_telephone?: string | null
+          created_at?: string
+          date_debut?: string | null
+          date_fin?: string | null
+          description?: string | null
+          id?: string
+          lien_url?: string | null
+          media_path?: string | null
+          media_type?: Database["public"]["Enums"]["pub_media"]
+          media_url: string
+          ordre?: number
+          periode_souhaitee_debut?: string | null
+          periode_souhaitee_fin?: string | null
+          placement?: Database["public"]["Enums"]["pub_placement"]
+          statut?: Database["public"]["Enums"]["pub_statut"]
+          titre: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          contact_email?: string | null
+          contact_nom?: string | null
+          contact_telephone?: string | null
+          created_at?: string
+          date_debut?: string | null
+          date_fin?: string | null
+          description?: string | null
+          id?: string
+          lien_url?: string | null
+          media_path?: string | null
+          media_type?: Database["public"]["Enums"]["pub_media"]
+          media_url?: string
+          ordre?: number
+          periode_souhaitee_debut?: string | null
+          periode_souhaitee_fin?: string | null
+          placement?: Database["public"]["Enums"]["pub_placement"]
+          statut?: Database["public"]["Enums"]["pub_statut"]
+          titre?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       rendez_vous: {
         Row: {
           admin_notes: string | null
@@ -490,9 +610,23 @@ export type Database = {
     Enums: {
       annonce_statut: "pending" | "validated" | "rejected" | "archived"
       app_role: "admin" | "user"
+      pub_media: "image" | "video"
+      pub_placement: "banner" | "card" | "video" | "feed"
+      pub_statut:
+        | "pending"
+        | "approved"
+        | "published"
+        | "rejected"
+        | "expired"
+        | "suspended"
       rdv_mode: "presentiel" | "visio" | "whatsapp"
       rdv_statut: "pending" | "planifie" | "termine" | "annule"
-      type_profil: "agriculteur" | "etudiant" | "investisseur" | "cadre"
+      type_profil:
+        | "agriculteur"
+        | "etudiant"
+        | "investisseur"
+        | "cadre"
+        | "annonceur"
       user_statut: "active" | "suspended"
     }
     CompositeTypes: {
@@ -623,9 +757,25 @@ export const Constants = {
     Enums: {
       annonce_statut: ["pending", "validated", "rejected", "archived"],
       app_role: ["admin", "user"],
+      pub_media: ["image", "video"],
+      pub_placement: ["banner", "card", "video", "feed"],
+      pub_statut: [
+        "pending",
+        "approved",
+        "published",
+        "rejected",
+        "expired",
+        "suspended",
+      ],
       rdv_mode: ["presentiel", "visio", "whatsapp"],
       rdv_statut: ["pending", "planifie", "termine", "annule"],
-      type_profil: ["agriculteur", "etudiant", "investisseur", "cadre"],
+      type_profil: [
+        "agriculteur",
+        "etudiant",
+        "investisseur",
+        "cadre",
+        "annonceur",
+      ],
       user_statut: ["active", "suspended"],
     },
   },

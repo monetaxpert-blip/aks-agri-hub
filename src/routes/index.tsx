@@ -5,6 +5,7 @@ import { ArrowRight, Sprout, GraduationCap, Coins, Briefcase, ShieldCheck, Hands
 import { AKS_ASSETS } from "@/lib/aks-assets";
 import { PremiumButton } from "@/components/aks/PremiumButton";
 import { listPartenaires } from "@/lib/public.functions";
+import { AdSlot } from "@/components/aks/AdSlot";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -74,6 +75,9 @@ function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* PUBLICITÉ — BANNIÈRE */}
+      <AdSlot placement="banner" title="Espace annonceurs" limit={1} />
 
       {/* NOTRE HISTOIRE */}
       <section className="relative overflow-hidden bg-secondary/30 py-20">
@@ -194,6 +198,10 @@ function Home() {
           ))}
         </div>
       </section>
+
+      {/* PUBLICITÉS — CARTES & VIDÉOS */}
+      <AdSlot placement="card" title="Ils soutiennent l'agriculture sénégalaise" limit={3} />
+      <AdSlot placement="video" title="En vidéo" limit={2} />
 
       {/* CTA */}
       <section className="mx-auto max-w-5xl px-4 pb-20 md:px-6">

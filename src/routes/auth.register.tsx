@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { registerSchema, proDetailsSchema } from "@/lib/schemas";
+import { registerSchema, proDetailsSchema, annonceurDetailsSchema } from "@/lib/schemas";
 
 export const Route = createFileRoute("/auth/register")({
   head: () => ({
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/auth/register")({
   component: Register,
 });
 
-type Profil = "agriculteur" | "etudiant" | "investisseur" | "cadre";
+type Profil = "agriculteur" | "etudiant" | "investisseur" | "cadre" | "annonceur";
 
 function Register() {
   const [loading, setLoading] = useState(false);
@@ -29,6 +29,7 @@ function Register() {
   const nav = useNavigate();
 
   const isPro = type === "investisseur" || type === "cadre";
+  const isAnnonceur = type === "annonceur";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -62,6 +63,25 @@ function Register() {
       const proParsed = proDetailsSchema.safeParse(proRaw);
       if (!proParsed.success) return toast.error(proParsed.error.issues[0]?.message ?? "Champs professionnels invalides");
       pro = proParsed.data;
+    }
+
+    let annonceur: ReturnType<typeof annonceurDetailsSchema.parse> | null = null;
+    if (isAnnonceur) {
+      const aRaw = {
+        entreprise: String(fd.get("entreprise") ?? ""),
+        responsable: String(fd.get("responsable") ?? ""),
+        email: String(fd.get("contact_email") ?? ""),
+        telephone: String(fd.get("contact_telephone") ?? ""),
+        secteur_activite: String(fd.get("secteur_activite_ann") ?? ""),
+        localisation: String(fd.get("localisation") ?? ""),
+        description: String(fd.get("description_ann") ?? ""),
+        logo_url: String(fd.get("logo_url") ?? ""),
+        site_web: String(fd.get("site_web") ?? ""),
+        infos_complementaires: String(fd.get("infos_complementaires") ?? ""),
+      };
+      const aParsed = annonceurDetailsSchema.safeParse(aRaw);
+      if (!aParsed.success) return toast.error(aParsed.error.issues[0]?.message ?? "Informations entreprise invalides");
+      annonceur = aParsed.data;
     }
 
     setLoading(true);
@@ -99,6 +119,22 @@ function Register() {
         });
       }
 
+      if (annonceur && signUp.user) {
+        await supabase.from("annonceur_details").upsert({
+          user_id: signUp.user.id,
+          entreprise: annonceur.entreprise,
+          responsable: annonceur.responsable || null,
+          email: annonceur.email || null,
+          telephone: annonceur.telephone || null,
+          secteur_activite: annonceur.secteur_activite || null,
+          localisation: annonceur.localisation || null,
+          description: annonceur.description || null,
+          logo_url: annonceur.logo_url || null,
+          site_web: annonceur.site_web || null,
+          infos_complementaires: annonceur.infos_complementaires || null,
+        });
+      }
+
       toast.success("Compte créé, bienvenue !");
       nav({ to: "/dashboard" });
     } catch (err) {
@@ -120,11 +156,17 @@ function Register() {
               <SelectItem value="etudiant">Étudiant</SelectItem>
               <SelectItem value="investisseur">Investisseur</SelectItem>
               <SelectItem value="cadre">Cadre</SelectItem>
+              <SelectItem value="annonceur">Annonceur</SelectItem>
             </SelectContent>
           </Select>
           {isPro && (
             <p className="mt-1 text-xs text-muted-foreground">
               Parcours enrichi : merci de compléter vos informations professionnelles ci-dessous.
+            </p>
+          )}
+          {isAnnonceur && (
+            <p className="mt-1 text-xs text-muted-foreground">
+              Parcours annonceur : présentez votre entreprise. Vos campagnes seront validées par l'équipe AKS.
             </p>
           )}
         </div>
@@ -163,6 +205,30 @@ function Register() {
             </div>
             <div><Label>Domaine d'intérêt</Label><Input name="domaine_interet" placeholder="ex: maraîchage, élevage, transformation" className="h-11 rounded-xl bg-white/80" /></div>
             <div><Label>Expérience</Label><Textarea name="experience" rows={3} className="rounded-xl bg-white/80" placeholder="Brève description de votre parcours" /></div>
+          </div>
+        )}
+
+        {isAnnonceur && (
+          <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+            <p className="font-display text-sm font-bold uppercase tracking-wider text-primary">
+              Informations entreprise
+            </p>
+            <div><Label>Nom de l'entreprise / marque</Label><Input name="entreprise" required className="h-11 rounded-xl bg-white/80" /></div>
+            <div className="grid grid-cols-2 gap-3">
+              <div><Label>Responsable</Label><Input name="responsable" className="h-11 rounded-xl bg-white/80" /></div>
+              <div><Label>Secteur d'activité</Label><Input name="secteur_activite_ann" className="h-11 rounded-xl bg-white/80" /></div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div><Label>Email professionnel</Label><Input name="contact_email" type="email" className="h-11 rounded-xl bg-white/80" /></div>
+              <div><Label>Téléphone pro</Label><Input name="contact_telephone" className="h-11 rounded-xl bg-white/80" /></div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div><Label>Localisation</Label><Input name="localisation" className="h-11 rounded-xl bg-white/80" /></div>
+              <div><Label>Site web (https://)</Label><Input name="site_web" placeholder="https://…" className="h-11 rounded-xl bg-white/80" /></div>
+            </div>
+            <div><Label>Logo (URL)</Label><Input name="logo_url" className="h-11 rounded-xl bg-white/80" /></div>
+            <div><Label>Présentation</Label><Textarea name="description_ann" rows={3} className="rounded-xl bg-white/80" /></div>
+            <div><Label>Informations complémentaires</Label><Textarea name="infos_complementaires" rows={2} className="rounded-xl bg-white/80" /></div>
           </div>
         )}
 
