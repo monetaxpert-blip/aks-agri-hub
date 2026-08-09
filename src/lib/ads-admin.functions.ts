@@ -62,10 +62,15 @@ export const moderatePublicite = createServerFn({ method: "POST" })
   .handler(async ({ context, data }) => {
     const { supabase, userId } = context;
     await ensureAdmin(supabase, userId);
-    const patch: Record<string, unknown> = { statut: data.statut };
-    if (data.note !== undefined) patch['admin_notes'] = data.note || null;
-    if (data.date_debut !== undefined) patch['date_debut'] = data.date_debut || null;
-    if (data.date_fin !== undefined) patch['date_fin'] = data.date_fin || null;
+    const patch: {
+      statut: "pending" | "approved" | "published" | "rejected" | "expired" | "suspended";
+      admin_notes?: string | null;
+      date_debut?: string | null;
+      date_fin?: string | null;
+    } = { statut: data.statut };
+    if (data.note !== undefined) patch.admin_notes = data.note || null;
+    if (data.date_debut !== undefined) patch.date_debut = data.date_debut || null;
+    if (data.date_fin !== undefined) patch.date_fin = data.date_fin || null;
     const { error } = await supabase.from("publicites").update(patch).eq("id", data.id);
     if (error) throw new Error(error.message);
     await logAudit(supabase, userId, `publicite_${data.statut}`, data.id, { note: data.note ?? null });
