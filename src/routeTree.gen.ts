@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RendezVousRouteImport } from './routes/rendez-vous'
 import { Route as PartenairesRouteImport } from './routes/partenaires'
+import { Route as NotreHistoireRouteImport } from './routes/notre-histoire'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CommentCaMarcheRouteImport } from './routes/comment-ca-marche'
 import { Route as AProposRouteImport } from './routes/a-propos'
@@ -42,6 +43,11 @@ const RendezVousRoute = RendezVousRouteImport.update({
 const PartenairesRoute = PartenairesRouteImport.update({
   id: '/partenaires',
   path: '/partenaires',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotreHistoireRoute = NotreHistoireRouteImport.update({
+  id: '/notre-histoire',
+  path: '/notre-histoire',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/notre-histoire': typeof NotreHistoireRoute
   '/partenaires': typeof PartenairesRoute
   '/rendez-vous': typeof RendezVousRoute
   '/admin/login': typeof AdminLoginRoute
@@ -195,6 +202,7 @@ export interface FileRoutesByTo {
   '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/notre-histoire': typeof NotreHistoireRoute
   '/partenaires': typeof PartenairesRoute
   '/rendez-vous': typeof RendezVousRoute
   '/admin/login': typeof AdminLoginRoute
@@ -222,6 +230,7 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/notre-histoire': typeof NotreHistoireRoute
   '/partenaires': typeof PartenairesRoute
   '/rendez-vous': typeof RendezVousRoute
   '/admin/login': typeof AdminLoginRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
+    | '/notre-histoire'
     | '/partenaires'
     | '/rendez-vous'
     | '/admin/login'
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
+    | '/notre-histoire'
     | '/partenaires'
     | '/rendez-vous'
     | '/admin/login'
@@ -300,6 +311,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
+    | '/notre-histoire'
     | '/partenaires'
     | '/rendez-vous'
     | '/admin/login'
@@ -327,6 +339,7 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   CommentCaMarcheRoute: typeof CommentCaMarcheRoute
   ContactRoute: typeof ContactRoute
+  NotreHistoireRoute: typeof NotreHistoireRoute
   PartenairesRoute: typeof PartenairesRoute
   RendezVousRoute: typeof RendezVousRoute
   AdminLoginRoute: typeof AdminLoginRoute
@@ -349,6 +362,13 @@ declare module '@tanstack/react-router' {
       path: '/partenaires'
       fullPath: '/partenaires'
       preLoaderRoute: typeof PartenairesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notre-histoire': {
+      id: '/notre-histoire'
+      path: '/notre-histoire'
+      fullPath: '/notre-histoire'
+      preLoaderRoute: typeof NotreHistoireRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -565,6 +585,7 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   CommentCaMarcheRoute: CommentCaMarcheRoute,
   ContactRoute: ContactRoute,
+  NotreHistoireRoute: NotreHistoireRoute,
   PartenairesRoute: PartenairesRoute,
   RendezVousRoute: RendezVousRoute,
   AdminLoginRoute: AdminLoginRoute,
@@ -575,3 +596,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
