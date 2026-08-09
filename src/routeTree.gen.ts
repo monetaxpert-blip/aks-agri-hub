@@ -27,6 +27,7 @@ import { Route as AuthenticatedDashboardRendezVousRouteImport } from './routes/_
 import { Route as AuthenticatedDashboardProfilRouteImport } from './routes/_authenticated/dashboard.profil'
 import { Route as AuthenticatedAdminUtilisateursRouteImport } from './routes/_authenticated/admin.utilisateurs'
 import { Route as AuthenticatedAdminRendezVousRouteImport } from './routes/_authenticated/admin.rendez-vous'
+import { Route as AuthenticatedAdminPublicitesRouteImport } from './routes/_authenticated/admin.publicites'
 import { Route as AuthenticatedAdminPartenairesRouteImport } from './routes/_authenticated/admin.partenaires'
 import { Route as AuthenticatedAdminContactsRouteImport } from './routes/_authenticated/admin.contacts'
 import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
@@ -131,6 +132,12 @@ const AuthenticatedAdminRendezVousRoute =
     path: '/admin/rendez-vous',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAdminPublicitesRoute =
+  AuthenticatedAdminPublicitesRouteImport.update({
+    id: '/admin/publicites',
+    path: '/admin/publicites',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAdminPartenairesRoute =
   AuthenticatedAdminPartenairesRouteImport.update({
     id: '/admin/partenaires',
@@ -201,6 +208,7 @@ export interface FileRoutesByFullPath {
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/contacts': typeof AuthenticatedAdminContactsRoute
   '/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/admin/publicites': typeof AuthenticatedAdminPublicitesRoute
   '/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
   '/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
   '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
@@ -229,6 +237,7 @@ export interface FileRoutesByTo {
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/contacts': typeof AuthenticatedAdminContactsRoute
   '/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/admin/publicites': typeof AuthenticatedAdminPublicitesRoute
   '/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
   '/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
   '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
@@ -259,6 +268,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/_authenticated/admin/contacts': typeof AuthenticatedAdminContactsRoute
   '/_authenticated/admin/partenaires': typeof AuthenticatedAdminPartenairesRoute
+  '/_authenticated/admin/publicites': typeof AuthenticatedAdminPublicitesRoute
   '/_authenticated/admin/rendez-vous': typeof AuthenticatedAdminRendezVousRoute
   '/_authenticated/admin/utilisateurs': typeof AuthenticatedAdminUtilisateursRouteWithChildren
   '/_authenticated/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
@@ -289,6 +299,7 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/contacts'
     | '/admin/partenaires'
+    | '/admin/publicites'
     | '/admin/rendez-vous'
     | '/admin/utilisateurs'
     | '/dashboard/profil'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/admin/audit'
     | '/admin/contacts'
     | '/admin/partenaires'
+    | '/admin/publicites'
     | '/admin/rendez-vous'
     | '/admin/utilisateurs'
     | '/dashboard/profil'
@@ -346,6 +358,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/audit'
     | '/_authenticated/admin/contacts'
     | '/_authenticated/admin/partenaires'
+    | '/_authenticated/admin/publicites'
     | '/_authenticated/admin/rendez-vous'
     | '/_authenticated/admin/utilisateurs'
     | '/_authenticated/dashboard/profil'
@@ -502,6 +515,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRendezVousRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/publicites': {
+      id: '/_authenticated/admin/publicites'
+      path: '/admin/publicites'
+      fullPath: '/admin/publicites'
+      preLoaderRoute: typeof AuthenticatedAdminPublicitesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/admin/partenaires': {
       id: '/_authenticated/admin/partenaires'
       path: '/admin/partenaires'
@@ -588,6 +608,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminAuditRoute: typeof AuthenticatedAdminAuditRoute
   AuthenticatedAdminContactsRoute: typeof AuthenticatedAdminContactsRoute
   AuthenticatedAdminPartenairesRoute: typeof AuthenticatedAdminPartenairesRoute
+  AuthenticatedAdminPublicitesRoute: typeof AuthenticatedAdminPublicitesRoute
   AuthenticatedAdminRendezVousRoute: typeof AuthenticatedAdminRendezVousRoute
   AuthenticatedAdminUtilisateursRoute: typeof AuthenticatedAdminUtilisateursRouteWithChildren
   AuthenticatedDashboardProfilRoute: typeof AuthenticatedDashboardProfilRoute
@@ -605,6 +626,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminAuditRoute: AuthenticatedAdminAuditRoute,
   AuthenticatedAdminContactsRoute: AuthenticatedAdminContactsRoute,
   AuthenticatedAdminPartenairesRoute: AuthenticatedAdminPartenairesRoute,
+  AuthenticatedAdminPublicitesRoute: AuthenticatedAdminPublicitesRoute,
   AuthenticatedAdminRendezVousRoute: AuthenticatedAdminRendezVousRoute,
   AuthenticatedAdminUtilisateursRoute:
     AuthenticatedAdminUtilisateursRouteWithChildren,
