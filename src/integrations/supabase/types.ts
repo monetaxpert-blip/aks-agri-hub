@@ -606,6 +606,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_suspended: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       annonce_statut: "pending" | "validated" | "rejected" | "archived"
