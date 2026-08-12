@@ -14,9 +14,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export const Route = createFileRoute("/rendez-vous")({
   head: () => ({
     meta: [
-      { title: "Prendre un rendez-vous — AgroKonnecte Sénégal" },
+      { title: "Prendre un rendez-vous | AgroKonnecte Sénégal" },
       { name: "description", content: "Réservez un rendez-vous avec l'équipe AKS. Présentiel, visioconférence ou WhatsApp." },
-      { property: "og:title", content: "Rendez-vous — AKS" },
+      { property: "og:title", content: "Rendez-vous | AKS" },
       { property: "og:description", content: "Réservez un créneau avec notre équipe." },
     ],
   }),

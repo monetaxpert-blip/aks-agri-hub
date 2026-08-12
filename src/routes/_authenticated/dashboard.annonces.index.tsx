@@ -49,7 +49,7 @@ function MesAnnonces() {
             {rows.map((a) => (
               <tr key={a.id} className="border-t border-border">
                 <td className="px-4 py-3 font-medium">{a.titre}</td>
-                <td className="px-4 py-3">{a.categorie ?? "—"}</td>
+                <td className="px-4 py-3">{a.categorie ?? "-"}</td>
                 <td className="px-4 py-3"><span className={`rounded-full px-2 py-1 text-xs font-semibold ${a.statut === "validated" ? "bg-green-100 text-green-700" : a.statut === "rejected" ? "bg-red-100 text-red-700" : "bg-yellow-100 text-yellow-700"}`}>{a.statut}</span></td>
                 <td className="px-4 py-3 text-xs text-muted-foreground">{new Date(a.created_at).toLocaleDateString("fr-FR")}</td>
                 <td className="px-4 py-3 text-right"><Button variant="ghost" size="sm" onClick={() => remove(a.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button></td>

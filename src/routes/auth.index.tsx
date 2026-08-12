@@ -13,7 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 export const Route = createFileRoute("/auth/")({
   head: () => ({
     meta: [
-      { title: "Connexion — AgroKonnecte Sénégal" },
+      { title: "Connexion | AgroKonnecte Sénégal" },
       { name: "description", content: "Connectez-vous à votre espace AgroKonnecte Sénégal." },
       { name: "robots", content: "noindex" },
     ],

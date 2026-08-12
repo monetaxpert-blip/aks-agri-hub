@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/_authenticated/dashboard/publicites/")({
   head: () => ({
     meta: [
-      { title: "Mes publicités — AgroKonnecte Sénégal" },
+      { title: "Mes publicités | AgroKonnecte Sénégal" },
       { name: "description", content: "Gérez vos campagnes publicitaires sur AgroKonnecte Sénégal." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Mes publicités — AgroKonnecte Sénégal" },
+      { property: "og:title", content: "Mes publicités | AgroKonnecte Sénégal" },
       { property: "og:description", content: "Espace annonceur AgroKonnecte Sénégal." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

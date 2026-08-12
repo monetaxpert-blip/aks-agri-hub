@@ -14,10 +14,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export const Route = createFileRoute("/_authenticated/dashboard/publicites/nouvelle")({
   head: () => ({
     meta: [
-      { title: "Nouvelle campagne publicitaire — AgroKonnecte Sénégal" },
+      { title: "Nouvelle campagne publicitaire | AgroKonnecte Sénégal" },
       { name: "description", content: "Soumettez une campagne publicitaire à l'équipe AgroKonnecte Sénégal." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Nouvelle campagne — AgroKonnecte Sénégal" },
+      { property: "og:title", content: "Nouvelle campagne | AgroKonnecte Sénégal" },
       { property: "og:description", content: "Espace annonceur AgroKonnecte Sénégal." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

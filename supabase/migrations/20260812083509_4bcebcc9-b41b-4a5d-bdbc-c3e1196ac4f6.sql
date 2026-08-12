@@ -1,0 +1,1 @@
+REVOKE ALL ON FUNCTION public.is_suspended(uuid) FROM PUBLIC, anon, authenticated;

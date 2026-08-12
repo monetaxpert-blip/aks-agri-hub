@@ -30,18 +30,18 @@ function UserDetail() {
             <p className="text-sm text-muted-foreground">{p.email} · {p.telephone}</p>
             <p className="mt-1 text-xs">
               <span className="rounded-full bg-primary/10 px-2 py-0.5 font-semibold text-primary">{p.type_profil ?? "profil non défini"}</span>
-              <span className="ml-2">{p.region ?? "—"} · {p.commune ?? "—"}</span>
+              <span className="ml-2">{p.region ?? "-"} · {p.commune ?? "-"}</span>
             </p>
           </div>
         </div>
         <dl className="mt-6 grid gap-3 text-sm sm:grid-cols-3">
-          <Info label="Adresse" v={p.adresse ?? "—"} />
+          <Info label="Adresse" v={p.adresse ?? "-"} />
           <Info label="Statut" v={p.statut} />
           <Info label="Inscrit le" v={new Date(p.created_at).toLocaleDateString("fr-FR")} />
-          <Info label="Dernière connexion" v={p.derniere_connexion ? new Date(p.derniere_connexion).toLocaleString("fr-FR") : "—"} />
+          <Info label="Dernière connexion" v={p.derniere_connexion ? new Date(p.derniere_connexion).toLocaleString("fr-FR") : "-"} />
           <Info label="Nombre de connexions" v={String(p.nb_connexions)} />
-          <Info label="Dernière IP" v={p.last_ip ?? "—"} />
-          <Info label="Navigateur" v={p.last_user_agent ?? "—"} />
+          <Info label="Dernière IP" v={p.last_ip ?? "-"} />
+          <Info label="Navigateur" v={p.last_user_agent ?? "-"} />
         </dl>
       </div>
 

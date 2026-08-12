@@ -76,7 +76,7 @@ function Home() {
         </div>
       </section>
 
-      {/* PUBLICITÉ — BANNIÈRE */}
+      {/* PUBLICITÉ | BANNIÈRE */}
       <AdSlot placement="banner" title="Espace annonceurs" limit={1} />
 
       {/* NOTRE HISTOIRE */}
@@ -199,7 +199,7 @@ function Home() {
         </div>
       </section>
 
-      {/* PUBLICITÉS — CARTES & VIDÉOS */}
+      {/* PUBLICITÉS | CARTES & VIDÉOS */}
       <AdSlot placement="card" title="Ils soutiennent l'agriculture sénégalaise" limit={3} />
       <AdSlot placement="video" title="En vidéo" limit={2} />
 

@@ -13,7 +13,7 @@ import { registerSchema, proDetailsSchema, annonceurDetailsSchema } from "@/lib/
 export const Route = createFileRoute("/auth/register")({
   head: () => ({
     meta: [
-      { title: "Créer un compte — AgroKonnecte Sénégal" },
+      { title: "Créer un compte | AgroKonnecte Sénégal" },
       { name: "description", content: "Créez votre compte AgroKonnecte Sénégal." },
       { name: "robots", content: "noindex" },
     ],
