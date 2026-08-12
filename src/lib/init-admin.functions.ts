@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 
 /**
- * Admin bootstrap — DISABLED in production.
+ * Admin bootstrap | DISABLED in production.
  *
  * The initial admin has been created. This endpoint is now closed to prevent
  * anonymous callers from probing whether an admin exists or attempting a

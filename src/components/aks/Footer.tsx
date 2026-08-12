@@ -10,7 +10,7 @@ export function Footer() {
         <div className="md:col-span-2">
           <Logo className="h-12 w-auto" />
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            AgroKonnecte Sénégal est l'espace digital dédié au secteur agricole. Nous connectons agriculteurs, étudiants, investisseurs et cadres — de manière sécurisée, simple et efficace — pour faciliter le développement de projets à fort impact.
+            AgroKonnecte Sénégal est l'espace digital dédié au secteur agricole. Nous connectons agriculteurs, étudiants, investisseurs et cadres | de manière sécurisée, simple et efficace | pour faciliter le développement de projets à fort impact.
           </p>
         </div>
         <div>
@@ -33,7 +33,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Agro Konnecte Sénégal — Connecter l'agriculture sénégalaise au futur.
+        © {new Date().getFullYear()} Agro Konnecte Sénégal | Connecter l'agriculture sénégalaise au futur.
       </div>
     </footer>
   );

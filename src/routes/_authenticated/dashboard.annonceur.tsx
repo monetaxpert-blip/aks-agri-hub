@@ -12,10 +12,10 @@ import { Textarea } from "@/components/ui/textarea";
 export const Route = createFileRoute("/_authenticated/dashboard/annonceur")({
   head: () => ({
     meta: [
-      { title: "Ma fiche annonceur — AgroKonnecte Sénégal" },
+      { title: "Ma fiche annonceur | AgroKonnecte Sénégal" },
       { name: "description", content: "Renseignez les informations de votre entreprise annonceur." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Ma fiche annonceur — AgroKonnecte Sénégal" },
+      { property: "og:title", content: "Ma fiche annonceur | AgroKonnecte Sénégal" },
       { property: "og:description", content: "Espace annonceur AgroKonnecte Sénégal." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — AgroKonnecte Sénégal" },
+      { title: "Contact, AgroKonnecte Sénégal" },
       { name: "description", content: "Contactez l'équipe AgroKonnecte Sénégal par formulaire, téléphone, email ou WhatsApp." },
       { property: "og:title", content: "Contact AKS" },
       { property: "og:description", content: "Écrivez-nous, appelez-nous ou passez par WhatsApp." },
@@ -47,9 +47,9 @@ function Contact() {
     try {
       const res = await submit({ data: parsed.data });
       if (!res.ok) throw new Error(res.error);
-      const waMsg = `Bonjour AKS,\n\n${parsed.data.nom} — ${parsed.data.email}\nSujet : ${parsed.data.sujet}\n\n${parsed.data.message}`;
+      const waMsg = `Bonjour AKS,\n\n${parsed.data.nom}, ${parsed.data.email}\nSujet : ${parsed.data.sujet}\n\n${parsed.data.message}`;
       window.open(AKS_CONTACT.waLink(waMsg), "_blank");
-      toast.success("Message envoyé — nous ouvrons WhatsApp pour vous.");
+      toast.success("Message envoyé, nous ouvrons WhatsApp pour vous.");
       (e.target as HTMLFormElement).reset();
     } catch (err) {
       toast.error((err as Error).message);

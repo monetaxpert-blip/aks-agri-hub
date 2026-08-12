@@ -3,9 +3,9 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/comment-ca-marche")({
   head: () => ({
     meta: [
-      { title: "Comment ça marche — AgroKonnecte Sénégal" },
+      { title: "Comment ça marche | AgroKonnecte Sénégal" },
       { name: "description", content: "Le fonctionnement d'AKS : dépôt d'une demande, analyse par notre équipe, mise en relation sécurisée." },
-      { property: "og:title", content: "Comment ça marche — AKS" },
+      { property: "og:title", content: "Comment ça marche | AKS" },
       { property: "og:description", content: "Un fonctionnement simple, une garantie de confiance." },
     ],
   }),

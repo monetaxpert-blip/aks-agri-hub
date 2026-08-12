@@ -12,10 +12,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export const Route = createFileRoute("/_authenticated/admin/publicites")({
   head: () => ({
     meta: [
-      { title: "Modération des publicités — Admin AKS" },
+      { title: "Modération des publicités | Admin AKS" },
       { name: "description", content: "Gestion et modération des campagnes publicitaires AgroKonnecte Sénégal." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Modération des publicités — Admin AKS" },
+      { property: "og:title", content: "Modération des publicités | Admin AKS" },
       { property: "og:description", content: "Administration AgroKonnecte Sénégal." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -91,11 +91,11 @@ function AdminPublicites() {
               <div className="min-w-0">
                 <p className="font-display font-bold">{p.titre}</p>
                 <p className="text-xs text-muted-foreground">
-                  {p.annonceur?.entreprise ?? "Annonceur"} · {p.annonceur?.email ?? "—"} · {p.annonceur?.telephone ?? "—"}
+                  {p.annonceur?.entreprise ?? "Annonceur"} · {p.annonceur?.email ?? "-"} · {p.annonceur?.telephone ?? "-"}
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   {p.media_type === "video" ? "Vidéo" : "Image"} · {p.placement} · souhaité :{" "}
-                  {p.periode_souhaitee_debut ?? "—"} → {p.periode_souhaitee_fin ?? "—"}
+                  {p.periode_souhaitee_debut ?? "-"} → {p.periode_souhaitee_fin ?? "-"}
                 </p>
                 {p.description && <p className="mt-2 max-w-2xl text-sm">{p.description}</p>}
                 {p.lien_url && (

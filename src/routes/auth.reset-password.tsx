@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/auth/reset-password")({
   head: () => ({
     meta: [
-      { title: "Mot de passe oublié — AKS" },
+      { title: "Mot de passe oublié | AKS" },
       { name: "description", content: "Réinitialisez votre mot de passe AgroKonnecte." },
       { name: "robots", content: "noindex" },
     ],

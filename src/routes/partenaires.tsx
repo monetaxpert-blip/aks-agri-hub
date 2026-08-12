@@ -5,9 +5,9 @@ import { listPartenaires } from "@/lib/public.functions";
 export const Route = createFileRoute("/partenaires")({
   head: () => ({
     meta: [
-      { title: "Partenaires — AgroKonnecte Sénégal" },
+      { title: "Partenaires | AgroKonnecte Sénégal" },
       { name: "description", content: "Découvrez les partenaires institutionnels et privés d'AgroKonnecte Sénégal." },
-      { property: "og:title", content: "Nos partenaires — AKS" },
+      { property: "og:title", content: "Nos partenaires | AKS" },
       { property: "og:description", content: "Institutions et acteurs qui soutiennent AKS." },
     ],
   }),

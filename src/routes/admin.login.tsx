@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/admin/login")({
   head: () => ({
     meta: [
-      { title: "Administration — AKS" },
+      { title: "Administration | AKS" },
       { name: "description", content: "Connexion administrateur." },
       { name: "robots", content: "noindex" },
     ],

@@ -55,7 +55,7 @@ function Ann() {
                 <h3 className="font-display text-lg font-bold">{a.titre}</h3>
                 <p className="text-xs text-muted-foreground">
                   {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                  Par {(a as any).profiles?.prenom} {(a as any).profiles?.nom} · {new Date(a.created_at).toLocaleDateString("fr-FR")} · {a.categorie ?? "—"}
+                  Par {(a as any).profiles?.prenom} {(a as any).profiles?.nom} · {new Date(a.created_at).toLocaleDateString("fr-FR")} · {a.categorie ?? "-"}
                 </p>
                 <p className="mt-2 whitespace-pre-wrap text-sm">{a.description}</p>
                 {a.admin_notes && <p className="mt-2 rounded bg-yellow-50 p-2 text-xs">Note admin : {a.admin_notes}</p>}

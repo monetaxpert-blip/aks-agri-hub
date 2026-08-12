@@ -109,8 +109,8 @@ function Users() {
                 <td className="px-4 py-3 font-medium">{u.prenom} {u.nom}</td>
                 <td className="px-4 py-3">{u.email}</td>
                 <td className="px-4 py-3">{u.telephone}</td>
-                <td className="px-4 py-3">{u.type_profil ?? "—"}</td>
-                <td className="px-4 py-3">{u.region ?? "—"}</td>
+                <td className="px-4 py-3">{u.type_profil ?? "-"}</td>
+                <td className="px-4 py-3">{u.region ?? "-"}</td>
                 <td className="px-4 py-3 text-xs text-muted-foreground">{new Date(u.created_at).toLocaleDateString("fr-FR")}</td>
                 <td className="px-4 py-3"><span className={`rounded-full px-2 py-1 text-xs font-semibold ${u.statut === "active" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>{u.statut}</span></td>
                 <td className="px-4 py-3">{u.nb_annonces}</td>
