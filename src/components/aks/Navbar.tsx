@@ -8,15 +8,13 @@ import { Button } from "@/components/ui/button";
 
 const links = [
   { to: "/", label: "Accueil" },
+  { to: "/notre-histoire", label: "Notre Histoire" },
   { to: "/a-propos", label: "À propos" },
   { to: "/comment-ca-marche", label: "Comment ça marche" },
   { to: "/partenaires", label: "Partenaires" },
   { to: "/contact", label: "Contact" },
-  {
-  label: "Notre Histoire",
-  href: "/notre-histoire"
-}
-];
+] as const;
+
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
