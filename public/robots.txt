@@ -3,4 +3,4 @@ Allow: /
 Disallow: /dashboard
 Disallow: /admin
 
-Sitemap: https://aks-agri-hub.lovable.app/sitemap.xml
+Sitemap: https://www.xn--agrokonnectesngal-ntbb.com/sitemap.xml

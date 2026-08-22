@@ -68,6 +68,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "AgroKonnecte Sénégal | Carrefour digital de l'agriculture" },
       { property: "og:description", content: "L'espace digital dédié au secteur agricole sénégalais. Agriculteurs • Étudiants • Investisseurs • Cadres." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "AgroKonnecte Sénégal" },
+      { property: "og:locale", content: "fr_SN" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "AgroKonnecte Sénégal | Carrefour digital de l'agriculture" },
       { name: "twitter:description", content: "L'espace digital dédié au secteur agricole sénégalais. Agriculteurs • Étudiants • Investisseurs • Cadres." },
