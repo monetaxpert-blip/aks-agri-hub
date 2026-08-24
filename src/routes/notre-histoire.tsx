@@ -20,8 +20,10 @@ export const Route = createFileRoute("/notre-histoire")({
           "De l'idée née dans les champs sénégalais à la plateforme d'intermédiation agricole de référence.",
       },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://www.senaks.company/notre-histoire" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://www.senaks.company/notre-histoire" }],
   }),
   component: NotreHistoire,
 });

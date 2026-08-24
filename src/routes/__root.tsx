@@ -79,6 +79,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: logoUrl },
+      { rel: "apple-touch-icon", href: logoUrl },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "AgroKonnecte Sénégal",
+          alternateName: ["Agro Konnecte Sénégal", "SENAKS", "AKS"],
+          url: "https://www.senaks.company/",
+          logo: "https://storage.googleapis.com/gpt-engineer-file-uploads/uBTkTKjMX3Z6cxxTS34SzE46jZc2/social-images/social-1783131101023-logo_agro_konnecte.webp",
+          description:
+            "Plateforme digitale d'intermédiation agricole au Sénégal : agriculteurs, étudiants, investisseurs et cadres.",
+          areaServed: "SN",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "AgroKonnecte Sénégal",
+          url: "https://www.senaks.company/",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
