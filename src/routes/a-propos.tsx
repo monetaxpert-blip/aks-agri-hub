@@ -8,7 +8,9 @@ export const Route = createFileRoute("/a-propos")({
       { name: "description", content: "AgroKonnecte Sénégal est une plateforme professionnelle d'intermédiation agricole. Découvrez notre mission et notre approche." },
       { property: "og:title", content: "À propos AgroKonnecte Sénégal" },
       { property: "og:description", content: "Notre mission, notre approche, notre équipe." },
+      { property: "og:url", content: "https://www.senaks.company/a-propos" },
     ],
+    links: [{ rel: "canonical", href: "https://www.senaks.company/a-propos" }],
   }),
   component: About,
 });

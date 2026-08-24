@@ -14,10 +14,10 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "AgroKonnecte Sénégal est l'espace digital dédié au secteur agricole. Nous connectons agriculteurs, étudiants, investisseurs et cadres de manière sécurisée, simple et efficace pour faciliter le développement de projets à fort impact." },
       { property: "og:title", content: "AgroKonnecte Sénégal Carrefour digital de l'agriculture" },
       { property: "og:description", content: "Agriculteurs • Étudiants • Investisseurs • Cadres bienvenue dans votre carrefour digital agricole." },
-      { property: "og:url", content: "https://www.xn--agrokonnectesngal-ntbb.com/" },
+      { property: "og:url", content: "https://www.senaks.company/" },
     ],
     links: [
-      { rel: "canonical", href: "https://www.xn--agrokonnectesngal-ntbb.com/" },
+      { rel: "canonical", href: "https://www.senaks.company/" },
     ],
   }),
   component: Home,

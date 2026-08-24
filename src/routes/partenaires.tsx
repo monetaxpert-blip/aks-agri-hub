@@ -9,7 +9,9 @@ export const Route = createFileRoute("/partenaires")({
       { name: "description", content: "Découvrez les partenaires institutionnels et privés d'AgroKonnecte Sénégal." },
       { property: "og:title", content: "Nos partenaires | AKS" },
       { property: "og:description", content: "Institutions et acteurs qui soutiennent AKS." },
+      { property: "og:url", content: "https://www.senaks.company/partenaires" },
     ],
+    links: [{ rel: "canonical", href: "https://www.senaks.company/partenaires" }],
   }),
   component: Partners,
 });

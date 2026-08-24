@@ -7,7 +7,9 @@ export const Route = createFileRoute("/comment-ca-marche")({
       { name: "description", content: "Le fonctionnement d'AKS : dépôt d'une demande, analyse par notre équipe, mise en relation sécurisée." },
       { property: "og:title", content: "Comment ça marche | AKS" },
       { property: "og:description", content: "Un fonctionnement simple, une garantie de confiance." },
+      { property: "og:url", content: "https://www.senaks.company/comment-ca-marche" },
     ],
+    links: [{ rel: "canonical", href: "https://www.senaks.company/comment-ca-marche" }],
   }),
   component: How,
 });

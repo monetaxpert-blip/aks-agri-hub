@@ -18,7 +18,9 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Contactez l'équipe AgroKonnecte Sénégal par formulaire, téléphone, email ou WhatsApp." },
       { property: "og:title", content: "Contact AKS" },
       { property: "og:description", content: "Écrivez-nous, appelez-nous ou passez par WhatsApp." },
+      { property: "og:url", content: "https://www.senaks.company/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://www.senaks.company/contact" }],
   }),
   component: Contact,
 });
