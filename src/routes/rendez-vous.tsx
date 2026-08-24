@@ -18,7 +18,9 @@ export const Route = createFileRoute("/rendez-vous")({
       { name: "description", content: "Réservez un rendez-vous avec l'équipe AKS. Présentiel, visioconférence ou WhatsApp." },
       { property: "og:title", content: "Rendez-vous | AKS" },
       { property: "og:description", content: "Réservez un créneau avec notre équipe." },
+      { property: "og:url", content: "https://www.senaks.company/rendez-vous" },
     ],
+    links: [{ rel: "canonical", href: "https://www.senaks.company/rendez-vous" }],
   }),
   component: RdvPage,
 });
