@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Domaine officiel : https://www.agrokonnectesénégal.com (punycode ci-dessous) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/notre-histoire</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/a-propos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/comment-ca-marche</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/partenaires</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/rendez-vous</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.xn--agrokonnectesngal-ntbb.com/auth</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.senaks.company/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.senaks.company/notre-histoire</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.senaks.company/a-propos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.senaks.company/comment-ca-marche</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.senaks.company/partenaires</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.senaks.company/rendez-vous</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.senaks.company/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.senaks.company/auth</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
